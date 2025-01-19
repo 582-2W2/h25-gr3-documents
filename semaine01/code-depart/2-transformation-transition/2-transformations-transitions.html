@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2 - Révision Transformation | Transition | Position </title>
+	<style>
+		/* Normalisation supplémentaire */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+
+		/*Propriété du conteneur principal : body*/
+		body {
+			width: 100vw;
+			background-color: #f5e0db;
+			text-align: center;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+			/*Conteneur flexible en colonne*/
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		h2 {
+			width: 100%;
+			padding: 2vh 0;
+			border-top: 2px dotted black;
+			border-bottom: 2px dotted black;
+		}
+
+		p {
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+
+		.conteneur-flex {
+			width: 100%;
+			margin: 2vh 0;
+
+			/*Conteneur flexible en rangée*/
+			display: flex;
+			justify-content: space-evenly;
+		}
+
+		.conteneur-flex div {
+			width: 20%;
+			height: 20vh;
+			padding: 1rem;
+			background-color: #ace3e0;
+			border: 2px solid black;
+			cursor: pointer;
+
+			/*Conteneur flex en rangée*/
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			/*Nécessaire pour la transition 3*/
+
+
+			/*Nécessaires pour les transitions 4 et 5*/
+
+		}
+
+		.conteneur-flex:nth-of-type(1) div {
+			width: 40%;
+			/*Effet de transition de 0.5s sur les propriétés margin-top et transform*/
+
+		}
+
+		/*Effet au survol*/
+		.mauvais-exemple {
+			/*On augmente sa marge haut à 10vh*/
+
+		}
+
+		/*Effet au survol*/
+		.bon-exemple {
+			/*On le déplace verticalement de 10vh*/
+
+		}
+
+		/*TRANSITIONS SIMPLES**/
+
+		/*Transition 1*/
+		.transition-1 {
+			/*
+				Effet de transition avec la propriété raccourcie
+				propriétés animées: color et background-color
+				durée de 400ms
+			*/
+
+		}
+
+		/*Effet au survol*/
+		.transition-1 {
+			/*Modification des valeurs des propriétés animées*/
+
+		}
+
+		/*Transition 2*/
+		.transition-2 {
+			/*
+				Effet de transition avec la propriété raccourcie
+				propriété animée: border-left
+				durée de 400ms
+			*/
+
+		}
+
+		.transition-2:hover {
+			/*Modification de la valeur de la propriété animée*/
+
+		}
+
+		/*Transition 3 - on anime l'élément et son contenu*/
+		.transition-3,
+		.transition-3 p {
+			/*
+				Effet de transition avec la propriété raccourcie
+				propriété animée: transform
+				durée de 0.5s
+			*/
+
+		}
+
+		.transition-3:hover {
+			/*Modification de la valeur de la propriété animée*/
+
+		}
+
+		.transition-3:hover p {
+			/*Modification de la valeur de la propriété animée*/
+
+		}
+
+		/*Révision sommaire des positions CSS*/
+
+		/*Position fixe...*/
+		.position-fixe {
+			width: 2rem;
+			height: 2rem;
+			line-height: 2rem;
+			background-color: black;
+			color: #ace3e0;
+			border-radius: 50%;
+
+			/*Positionnement fixe en haut et à droite de la page*/
+
+		}
+
+
+		/*TRANSITIONS PLUS COMPLEXES**/
+		.position-absolue {
+			background-color: black;
+			color: #ace3e0;
+
+
+			/*
+				Positionnement absolue
+				Ne fonctionnera pas si le conteneur parent a la position par défaut: static
+			*/
+
+			/*
+				On ajuste les dimensions (ou les 4 côtés de l'élément)
+				à celles du conteneur parent
+			*/
+
+
+			/*Transition sur les propriétés opacity, top et height*/
+
+		}
+
+
+		/*Transition 4*/
+		.transition-4 .position-absolue {
+			/*On met l'opacité à 0 au démarrage*/
+
+		}
+
+		.transition-4:hover .position-absolue {
+			/*Modification de la valeur de la propriété animée*/
+
+		}
+
+		/*Transition 5*/
+		.transition-5 .position-absolue {
+			/*Au démarrage - on met la position du top 100% et la hauteur à 0%*/
+
+		}
+
+		.transition-5:hover .position-absolue {
+			/*Modification de la valeur des propriétés animées*/
+
+		}
+	</style>
+</head>
+
+<body>
+	<h2>Optimiser vos transitions en évitant d'altérer la mise en page</h2>
+	<div class="conteneur-flex">
+		<div class="mauvais-exemple">Mauvais exemple - La disposition des éléments HTML est modifiée
+		</div>
+		<div class="bon-exemple">Bon exemple - La disposition des éléments HTML n'est pas modifiée
+		</div>
+	</div>
+
+	<h2>Quelques transitions simples</h2>
+	<div class="conteneur-flex">
+		<div class="transition-1">
+			<p>Transition 1</p>
+		</div>
+		<div class="transition-2">
+			<p>Transition 2</p>
+		</div>
+		<div class="transition-3">
+			<p>Transition 3</p>
+		</div>
+
+	</div>
+
+	<h2>Quelques transitions plus complexes</h2>
+	<div class="conteneur-flex">
+		<div class="transition-4">
+			<p>Transition 4</p>
+			<p class="position-absolue">ALLO</p>
+
+		</div>
+
+		<div class="transition-5">
+			<p>Transition 5</p>
+			<p class="position-absolue">ALLO</p>
+		</div>
+
+	</div>
+
+	<p class="position-fixe">F</p>
+
+</body>
+</html>

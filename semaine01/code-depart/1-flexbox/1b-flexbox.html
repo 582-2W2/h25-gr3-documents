@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1b - Révision Flexbox</title>
+	<style>
+		/* Normalisation supplémentaire */
+		* {
+			margin: 0;
+			padding: 0;
+			/*
+				On doit idéalement gérer cette propriété pour les éléments flexbox
+				pour un meilleur calcul de la hauteur et de la largeur réelle (ou visuelle)
+				des éléments pour tenir compte à la fois du contenu, du padding et des bordures
+			*/
+			box-sizing: border-box;
+		}
+
+		/*Styles CSS de base*/
+
+		body {
+			width: 100vw;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		}
+
+		main {
+			width: 95vw;
+			margin: 0 auto;
+		}
+
+		section {
+			width: 100%;
+			height: 12vh;
+			background-color: lightgrey;
+			margin-bottom: 2vh;
+			/*Conteneur flex en rangée*/
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+
+		h2 {
+			padding: 0.5rem;
+		}
+
+
+		/*La couleur et les caractéristiques générales des items flexbox*/
+		.conteneur-flex div:nth-child(1) {
+			background-color: #FE6347;
+		}
+
+		.conteneur-flex div:nth-child(2) {
+			background-color: #FEA500;
+		}
+
+		.conteneur-flex div:nth-child(3) {
+			background-color: #800000;
+		}
+
+		.conteneur-flex div:nth-child(4) {
+			background-color: #FF3399;
+		}
+
+		.conteneur-flex div:nth-child(5) {
+			background-color: #3399FF;
+		}
+
+
+		/*RÉVISION DES PROPRIÉTÉS DES CONTENEURS ET ITEMS FLEX*/
+
+		/*Conteneurs flex*/
+		.conteneur-flex {
+			width: 46%;
+			height: 80%;
+
+			border: 1px solid black;
+			/*
+				Conteneur flexbox en rangée avec les valeurs par défaut
+			*/
+
+		}
+
+
+		/*Les conteneurs en colonne*/
+		.colonne {
+			/*
+				La direction de l'axe principal est en colonne
+			*/
+
+		}
+
+		/*On "dimensionne" les items flex*/
+		.item-flex {}
+
+		/*Propriétés des conteneurs flex de la section 3*/
+		.section3 .conteneur-flex {}
+
+		/*Propriétés des conteneurs flex de la section 4*/
+		.section4 .conteneur-flex {}
+
+		/*Propriétés des conteneurs et items flex de la section 5*/
+		.section5 .conteneur-flex {}
+	</style>
+</head>
+
+<body>
+	<h2>Examinons les propriétés des conteneurs et éléments flexbox</h2>
+	<main>
+
+		<h3>Valeurs initiales des propriétés des conteneurs flex</h3>
+		<p>justify-content:flex-start, alig-items:stretch le <em>stretch</em> est apparent si le conteneur est
+			dimensionné, mais pas les items</p>
+		<section>
+			<div class="conteneur-flex">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+			</div>
+			<div class="conteneur-flex colonne">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+			</div>
+		</section>
+		<h3>Conteneur flex avec items dimensionnés à 30% en largeur et en hauteur</h3>
+		<p>Valeurs par défaut des propriétés des items flex : flex-grow:0, flex-shrink:1, flex-basis: auto (ou flex:0 1
+			auto)</p>
+
+		<section>
+			<div class="conteneur-flex">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+			<div class="conteneur-flex colonne">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+		</section>
+
+		<h3>Propriété(s) des conteneurs flex de la section 3?</h3>
+		<section class="section3">
+			<div class="conteneur-flex">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+			<div class="conteneur-flex colonne">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+		</section>
+
+		<h3>Propriété(s) des conteneurs flex de la section 4?</h3>
+		<section class="section4">
+			<div class="conteneur-flex">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+			<div class="conteneur-flex colonne">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+		</section>
+
+		<h3>Propriété(s) des conteneurs et item flex de la section 5?</h3>
+		<section class="section5">
+			<div class="conteneur-flex">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+			<div class="conteneur-flex colonne">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+				<div class="item-flex">4</div>
+				<div class="item-flex">5</div>
+			</div>
+		</section>
+</body>
+
+</html>
