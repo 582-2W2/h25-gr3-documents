@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1a - box-sizing</title>
+	<style>
+		body {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		}
+
+		div {
+			background-color: dimgrey;
+			width: 80vw;
+			height: 50vh;
+			border: 2px solid black;
+		}
+
+		h3,
+		p {
+			width: 80vw;
+		}
+
+		div p {
+			width: 100%;
+			background-color: #0CC;
+			padding: 5%;
+			border: 12px solid black;
+		}
+
+		p:last-child {
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Propriété CSS box-sizing</h1>
+	<h3>
+		La propriété box-sizing change la façon dont la largeur et la hauteur d'un élément HTML vont être calculés par
+		le navigateur.
+	</h3>
+	<p>En CSS, la largeur et la hauteur affectées à un élément s'appliquent par défaut à la <strong>boîte de
+			contenu</strong> (<code>content-box</code>) de l'élément. Si l'élément possède une bordure
+		(<code>border</code>) ou du remplissage (<code>padding</code>), celui-ci est ajouté à la largeur et/ou à la
+		hauteur de la boîte affichée à l'écran.</p>
+	<p>Il est souvent très utile de définir <strong>box-sizing</strong> à <strong>border-box</strong> aux éléments de
+		mise en page pour faciliter la gestion de leur taille. Avec <strong>border-box</strong>, les dimensions définies
+		pour l'élément vont s'appliquer à la boite contenant le <em>contenu</em> <strong>+</strong> le <em>padding</em>
+		<strong>+</strong> les bordures.
+	</p>
+	<div>
+		<p>Un premier paragraphe avec box-sizing: content-box (valeur par défaut)</p>
+		<p>Un deuxième paragraphe avec box-sizing: border-box</p>
+	</div>
+</body>
+
+</html>

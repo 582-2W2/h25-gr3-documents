@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1c - Flexbox - Bibliothèque flexible</title>
+	<style>
+		/* Normalisation supplémentaire */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+
+		/*Propriétés du conteneur principal : main*/
+		main {
+			width: 100vw;
+			height: 100vh;
+			text-align: center;
+
+			/*
+				Conteneur flexible en colonne, ses éléments flex sont alignés en bas
+				sur l'axe principal et au centre sur l'axe secondaire
+			*/
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: center;
+		}
+
+		.plancher {
+			width: 100%;
+			height: 5%;
+			background-color: black;
+		}
+
+		/*Propriétés de la bibliothèque*/
+		.bibliotheque {
+			width: 350px;
+			height: 600px;
+			background-color: brown;
+			border: 4px solid #802020;
+			border-bottom-width: 40px;
+		}
+
+		/*Propriétés des étagères -conteneurs flex*/
+		.etagere {
+			width: 100%;
+			height: calc((600px - 8px)/6);
+			background-color: #501515;
+			border: 4px solid #802020;
+
+			/*
+				La majorités des étagères sont des conteneurs flex en rangée
+				leurs éléments flex sont alignés au début sur l'axe principal
+				et sont alignés à la fin sur l'axe secondaire
+			*/
+			display: flex;
+			align-items: flex-end;
+		}
+
+		/*Propriétés des livres*/
+		.livre {
+			background-color: #fce171;
+			border: 1px solid orange;
+			color: #501515;
+			text-align: center;
+			font: bold 14px Arial;
+		}
+
+		/*Livre debout à la verticale*/
+		.vertical {
+			width: 20px;
+			height: 80px;
+		}
+
+		/*Livre couché à l'horizontale*/
+		.horizontal {
+			width: 80px;
+			height: 20px;
+			text-align: left;
+			padding-left: 1%;
+		}
+
+
+		/*
+			VARIANTES SELON LES ÉTAGÈRES
+			NOTE : le ciblage des étagères ou des livres utilise principalement des pseudo-classes...
+		*/
+
+		/*L'ordre de tous les livres de la 2e étagère est inversé*/
+		.bibliotheque .etagere:nth-of-type(2) {
+			flex-direction: row-reverse;
+		}
+
+		/*Les livres pairs de la 2e étagère sont plus larges*/
+		.bibliotheque .etagere:nth-of-type(2) .livre:nth-of-type(even) {
+			flex-grow: 1;
+		}
+
+		/*Les livres de la 3e étagère sont centrés sur celle-ci*/
+		.bibliotheque .etagere:nth-of-type(3) {
+			justify-content: center;
+		}
+
+		/*
+			Le premier livre de la 3e étagère est tourné
+			On change le point de transformation et on le tourne de moins 90 degrés
+		*/
+		.bibliotheque .etagere:nth-of-type(3) .livre:nth-child(1) {
+			transform-origin: bottom left;
+			transform: rotate(-90deg);
+			/* rotate: -90deg; */
+		}
+
+		/*L'espace entre les livres de la 4e étagère est répartie équitablement ou également*/
+		.bibliotheque .etagere:nth-of-type(4) {
+			justify-content: space-evenly;
+		}
+
+		/*Le dernier livre de la 4e étagère est placé en premier*/
+		.bibliotheque .etagere:nth-of-type(4) .livre:last-of-type {
+			order: -1;
+		}
+
+		/*L'espace entre les livres de la 5e étagère est réparti uniquement entre les livres*/
+		.bibliotheque .etagere:nth-of-type(5) {
+			justify-content: space-between;
+		}
+
+		/*
+			Les livres de la dernière étagère (6e) sont disposés en colonne
+			et forment 2 piles du côté gauche de l'étagère
+		*/
+		.bibliotheque .etagere:nth-of-type(6) {
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: end;
+			align-items: flex-start;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div class="bibliotheque">
+			<div class="etagere">
+				<div class="livre vertical">1</div>
+				<div class="livre vertical">2</div>
+				<div class="livre vertical">3</div>
+				<div class="livre vertical">4</div>
+				<div class="livre vertical">5</div>
+				<div class="livre vertical">6</div>
+				<div class="livre vertical">7</div>
+				<div class="livre vertical">8</div>
+				<div class="livre vertical">9</div>
+			</div>
+			<div class="etagere">
+				<div class="livre vertical">1</div>
+				<div class="livre vertical">2</div>
+				<div class="livre vertical">3</div>
+				<div class="livre vertical">4</div>
+				<div class="livre vertical">5</div>
+				<div class="livre vertical">6</div>
+				<div class="livre vertical">7</div>
+				<div class="livre vertical">8</div>
+				<div class="livre vertical">9</div>
+				<div class="livre vertical">10</div>
+				<div class="livre vertical">11</div>
+				<div class="livre vertical">12</div>
+				<div class="livre vertical">13</div>
+				<div class="livre vertical">14</div>
+			</div>
+			<div class="etagere">
+				<div class="livre vertical livreTourne">1</div>
+				<div class="livre vertical">2</div>
+				<div class="livre vertical">3</div>
+				<div class="livre vertical">4</div>
+				<div class="livre vertical">5</div>
+				<div class="livre vertical">6</div>
+				<div class="livre vertical">7</div>
+				<div class="livre vertical">8</div>
+			</div>
+			<div class="etagere">
+				<div class="livre vertical">1</div>
+				<div class="livre vertical">2</div>
+				<div class="livre vertical">3</div>
+				<div class="livre vertical">4</div>
+				<div class="livre vertical">5</div>
+				<div class="livre vertical">6</div>
+			</div>
+
+			<div class="etagere">
+				<div class="livre vertical">1</div>
+				<div class="livre vertical">2</div>
+				<div class="livre vertical">3</div>
+				<div class="livre vertical">4</div>
+				<div class="livre vertical">5</div>
+				<div class="livre vertical">6</div>
+			</div>
+			<div class="etagere">
+				<div class="livre horizontal">1</div>
+				<div class="livre horizontal">2</div>
+				<div class="livre horizontal">3</div>
+				<div class="livre horizontal">4</div>
+				<div class="livre horizontal">5</div>
+				<div class="livre horizontal">6</div>
+				<div class="livre horizontal">7</div>
+				<div class="livre horizontal">8</div>
+			</div>
+		</div>
+
+		<div class="plancher"></div>
+	</main>
+</body>
+
+</html>

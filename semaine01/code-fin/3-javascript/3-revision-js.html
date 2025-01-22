@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3 - Révision JavaSript</title>
+	<style>
+		/* Normalisation supplémentaire */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+
+		/*Propriété du conteneur principal : body*/
+		body {
+			width: 100vw;
+			height: 100vh;
+			background-color: #f5e0db;
+			font-family: Verdana, Geneva, sans-serif;
+
+			/*
+				Conteneur flexible en rangée
+			*/
+			display: flex;
+			/* justify-content: center;
+			align-items: center; */
+		}
+
+		div {
+			width: 80vmin;
+			height: 80vmin;
+			background-color: #ace3e0;
+			padding: 10vmin;
+			text-align: center;
+			font-size: 3rem;
+			border: 4px solid black;
+			cursor: pointer;
+			/*Empêcher la sélection du texte*/
+			user-select: none;
+
+			/*
+				Autre façon de centrer un élément flex dans son conteneur
+				SI le conteneur parent a une largeur et une hauteur déclarées
+			*/
+			margin: auto;
+
+			/*
+				Effet de transition quand on changera la valeur
+				de la propriété border-radius avec JavaScript
+			*/
+			/* transition: ; */
+			transition: border-radius 0.5s;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		Cliquez sur moi pour arrondir mon contour au hasard et voir l'effet de transition
+	</div>
+	<script>
+		//On récupère l'élément HTML <div> avec une variable dénommée : laDiv
+		let laDiv = document.querySelector("div");
+
+		/*
+			On met un gestionnaire d'événement pour détecter
+			si l'utilisateur clique sur la <div>
+		*/
+		laDiv.addEventListener("click", modifierBordure);
+
+
+		/*
+			Fonction pour modifier le contour de la bordure
+			propriété CSS  : border-radius
+		*/
+
+		function modifierBordure() {
+			//Calculer une valeur au hasard entre 10 et 50%
+			let courbure = 10 + Math.ceil(Math.random() * 40);
+			console.log("Courbure aléatoire : ", courbure);
+
+			//Changer le style CSS
+			laDiv.style.borderRadius = courbure + "%";
+		}
+
+
+	</script>
+</body>
+
+</html>
