@@ -7,6 +7,6 @@
 > :construction: = en cours
 > :heavy_check_mark: = complété
 
-### Semaine 1 :checkered_flag:
+### Semaine 1 :heavy_check_mark:
 >Révision : mise en page *flex*, transformations et transitions CSS, JavaScript.
 
