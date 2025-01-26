@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>03a - Typographie adaptative - Approche 1</title>
+	<title>3a - Typographie adaptative - Approche 1</title>
 
 	<style>
 		/* Normalisation supplémentaire 
@@ -22,10 +22,9 @@
 			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 			line-height: 1.5;
 			margin: 2vh 2vw;
-
 			/*
-					La taille de base des polices de caractères est fixée à la
-					valeur par défaut de la majorité des navigateurs : 16px
+				La taille de base des polices de caractères est fixée à la
+				valeur par défaut de la majorité des navigateurs : 16px
 			*/
 
 		}
@@ -41,15 +40,13 @@
 
 		/*
 			Style du texte pour les téléphones - un peu plus petit à 87,5%
-
 		*/
+		body {
 
-		body {}
-
+		}
 
 		/* Styles - Taille de la typographie pour les écrans plus larges
         ================================================================== */
-
 		/*
 				Tablette - 768px et +
 				On met la taille du texte à 100% sur le <body>
@@ -61,8 +58,9 @@
 				Ordinateur portable et de bureau - 992px and +
 				On met la taille du texte à 125% sur le <body>
 		*/
+		@media screen and (min-width:992px) {
 
-		@media screen and (min-width:992px) {}
+		}
 	</style>
 </head>
 
@@ -90,7 +88,7 @@
 			taille de l'écran s'élargit.
 		</p>
 		<p>La <strong>PREMIÈRE approche</strong> ici est donc de définir à la racine du document (balise &lt;html&gt;) une
-			taille de fonte de base,
+			taille de police de base,
 			généralement <code>font-size:16px;</code> qui correspond à la valeur de base de
 			la majorité des navigateurs. <br><br> Ensuite, les différentes requêtes médias feront les ajustements de
 			<strong>pourcentage</strong> de taille du texte sur la balise &lt;body&gt; selon les différentes

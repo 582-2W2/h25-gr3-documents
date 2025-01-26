@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>4a - Images adaptatives (changement de résolution)</title>
+	<title>4a - Images adaptatives (propriétés de base)</title>
 	<!-- Polices Google Roboto/Roboto Slab -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -122,7 +122,7 @@
 			*/
 			/* 
 				width: 100%;
-        height: 100%; 
+        		height: 100%; 
 			*/
 
 			/* 
@@ -133,17 +133,20 @@
 		}
 
 		/* 
-				Exemple 2 : propriété object-fit 
+			Exemple 2 : propriété object-fit 
 		*/
 		.exemple2 div.illustration img {
 			width: 100%;
 			height: 100%;
-			/* Utiliser object-fit pour que l'image soit contenue dans sa boîte parent */
-
+			/* 
+				Utiliser object-fit pour que l'image soit contenue dans sa boîte parent 
+			*/
+			
 			/* 
 				On peut aussi positionner l'image avec object-position 
-        (y revenir après l'exemple 4 plus loin) 
+        		(y revenir après l'exemple 4 plus loin) 
 			*/
+
 		}
 
 		/* 
@@ -153,8 +156,7 @@
 			width: 100%;
 			height: 100%;
 			/* 
-				Utiliser object-fit pour que l'image couvre le contenur 
-        complètement sans déformation 
+				Utiliser object-fit pour que l'image couvre le conteneur complètement sans déformation 
 			*/
 		}
 
@@ -167,8 +169,8 @@
 			height: 100%;
 			object-fit: cover;
 			/* 
-				Utiliser object-position pour s'assurer que la barque blanche 
-        reste entièrement (ou en tout cas principalement) visible dans l'image 
+				Utiliser object-position pour s'assurer que la barque blanche reste 
+				entièrement visible dans l'image (ou en tout cas le point focal de l'image)
 			*/
 		}
 
@@ -217,7 +219,10 @@
 					<div class="btn btn-lire-article">Lire le récit</div>
 				</div>
 				<div class="illustration">
-					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+					<img 
+						src="parc-du-bic/parc-du-bic_w_1240.jpg" 
+						alt="Barque blanche abandonnée au Parc national du Bic" 
+					/>
 				</div>
 			</article>
 			<article class="exemple2">
@@ -225,8 +230,7 @@
 					<h3>Propriété <code>object-fit: contain</code></h3>
 					<p>
 						Utiliser la propriété <code>object-fit</code> pour limiter l'image dans son conteneur, quitte à avoir des
-						bandes
-						horizontales/verticales vides.
+						bandes horizontales/verticales vides.
 					</p>
 					<p>
 						Dans cet exemple, on tient à avoir la largeur et la hauteur de l'image à 100%, mais pour éviter d'étirer
@@ -235,7 +239,10 @@
 					<div class="btn btn-lire-article">Lire le récit</div>
 				</div>
 				<div class="illustration">
-					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+					<img 
+						src="parc-du-bic/parc-du-bic_w_1240.jpg" 
+						alt="Barque blanche abandonnée au Parc national du Bic" 
+					/>
 				</div>
 			</article>
 			<article class="exemple3">
@@ -252,7 +259,10 @@
 					<div class="btn btn-lire-article">Lire le récit</div>
 				</div>
 				<div class="illustration">
-					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+					<img 
+						src="parc-du-bic/parc-du-bic_w_1240.jpg" 
+						alt="Barque blanche abandonnée au Parc national du Bic" 
+					/>
 				</div>
 			</article>
 			<article class="exemple4">
@@ -272,7 +282,10 @@
 					<div class="btn btn-lire-article">Lire le récit</div>
 				</div>
 				<div class="illustration">
-					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+					<img 
+						src="parc-du-bic/parc-du-bic_w_1240.jpg" 
+						alt="Barque blanche abandonnée au Parc national du Bic" 
+					/>
 				</div>
 			</article>
 		</section>
