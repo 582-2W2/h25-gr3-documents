@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>1 - Mise en page simple avec mode d'affichage flex</title>
+
+	<style>
+		/* Normalisation supplémentaire 
+    =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles des éléments de la page
+    =============================================== */
+		body {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			background-color: #eed7f1;
+			color: #eed7f1;
+		}
+
+		main {
+			width: 100vw;
+			height: 100vh;
+
+			/*
+					Conteneur flex en colonne
+			*/
+			display: flex;
+			flex-direction: column;
+		}
+
+		header,
+		footer {
+			min-height: 15vh;
+			width: 100%;
+			background-color: black;
+			padding: 2vh;
+		}
+
+		header {
+			margin-bottom: 1vh;
+		}
+
+		section {
+			width: 100%;
+
+			/*
+				Cet item flex doit prendre toute la place
+				qui reste dans son conteneur parent le main de 100vh
+			*/
+
+			/*
+				Conteneur flex en rangée,
+				ses enfants sont répartis dans l'espace également
+			*/
+		}
+
+		article {
+			width: 30%;
+			background-color: #995db5;
+			border-radius: 1vmax;
+			padding: 1vmax;
+			box-shadow: 0 3px 6px 0 rgba(60, 25, 80, 0.4);
+		}
+
+		/*
+			L'article 2 est plus court - rappel que par défaut si un item flex n'a
+			pas de hauteur défini tandis que le conteneur flex en a une... l'alignement 
+			secondaire est défini à strech
+		*/
+		article:nth-child(2) {
+			
+		}
+
+		footer {
+			margin-top: 1vh;
+			border-top: 4px solid black;
+
+			/*
+				Conteneur flex en rangée,
+				ses enfants sont répartis au centre horizontalement et verticalement
+				avec une gouttière (gutter) de 4% (gap: 0% 4%)
+			*/
+		}
+
+		.div-arrondie {
+			width: 6vmin;
+			height: 6vmin;
+			background-color: #f7941f;
+			border-radius: 3vmin;
+		}
+
+		/*Les div arrondies paires sont plus larges*/
+		.div-arrondie:nth-child(even) {
+
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<header>
+			<h1>Gérer la taille et la flexibilité des éléments flexibles... en pratique</h1>
+			<h3>Si tu as bien compris les propriétés des conteneurs et des items flex...</h3>
+			<h3>Reproduit la mise en page de la capture d'écran incluse dans le dossier</h3>
+		</header>
+
+		<section>
+			<article>Un petit article...</article>
+			<article>Un deuxième article un peu plus consistant que le premier... Mais pourquoi est-il si petit en hauteur???
+			</article>
+			<article>
+				Un troisième article avec du lorem ipsum.... Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Pellentesque et
+				ante arcu. Pellentesque posuere condimentum porttitor. Quisque porta lectus dictum, porttitor ipsum a, suscipit
+				mauris.
+				Morbi in dictum tortor. Aenean eget lorem purus. Donec nisi dolor, tempus eget sodales eu, dictum vel magna. In
+				hac habitasse platea dictumst. Vivamus eu urna id ante consectetur 
+				laoreet eu eget leo.
+			</article>
+		</section>
+
+		<footer>
+			<div class="div-arrondie"></div>
+			<div class="div-arrondie"></div>
+			<div class="div-arrondie"></div>
+			<div class="div-arrondie"></div>
+			<div class="div-arrondie"></div>
+		</footer>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2c- Ajuster les éléments flexbox</title>
+
+	<style>
+		/* Normalisation supplémentaire 
+        =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles de base pour téléphone
+        =============================================== */
+		html {
+			width: 100vw;
+			height: 100vh;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			background-color: #eed7f1;
+			color: #eed7f1;
+		}
+
+		header {
+			min-height: 10vh;
+			width: 100%;
+			background-color: black;
+			margin-bottom: 1vh;
+			padding: 2vh;
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+
+
+		section {
+			margin: 2vh;
+			/*
+				Conteneur flex en colonne
+				avec saut de ligne
+			*/
+
+
+		}
+
+		.conteneur-flex {
+			margin: 2vmin;
+			border: 1px dotted rgb(60, 25, 80)
+				/*
+					Conteneur flex en colonne
+					avec saut de ligne
+				*/
+
+		}
+
+		.item-flex {
+			text-align: center;
+			font-size: 1.5rem;
+			background-color: #995db5;
+			border-radius: 1vmax;
+			margin: 2vmin;
+			padding: 3vmin;
+			box-shadow: 0 3px 6px 0 rgba(60, 25, 80, 0.4);
+
+			/*S'étire comme item flex*/
+
+		}
+
+
+
+		/* Styles pour les écrans plus larges
+        =============================================== */
+
+		/*
+				Tablette - 768px et +
+				On met la section en contexteneur flex en rangée
+				On permet aux éléments de la classe .conteneur-flex de s'étirer
+
+		*/
+
+		/*
+				Ordinateur portable et de bureau - 992px and +
+				On met les éléments de la classe .conteneur-flex en rangée
+		*/
+	</style>
+</head>
+
+<body>
+
+	<main>
+		<header>
+			<h1>Ajuster les boîtes flexibles</h1>
+		</header>
+
+		<section>
+			<div class="conteneur-flex">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+			</div>
+			<div class="conteneur-flex">
+				<div class="item-flex">1</div>
+				<div class="item-flex">2</div>
+				<div class="item-flex">3</div>
+			</div>
+		</section>
+
+	</main>
+
+</body>
+
+</html>

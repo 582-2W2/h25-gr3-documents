@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>03a - Typographie adaptative - Approche 1</title>
+
+	<style>
+		/* Normalisation supplémentaire 
+        =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles de base
+        =============================================== */
+		html {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			line-height: 1.5;
+			margin: 2vh 2vw;
+
+			/*
+					La taille de base des polices de caractères est fixée à la
+					valeur par défaut de la majorité des navigateurs : 16px
+			*/
+
+		}
+
+		p {
+			margin-top: 2vh;
+		}
+
+		p:last-child {
+			padding: 2vh 2vw;
+			background-color: #CCC;
+		}
+
+		/*
+			Style du texte pour les téléphones - un peu plus petit à 87,5%
+
+		*/
+
+		body {}
+
+
+		/* Styles - Taille de la typographie pour les écrans plus larges
+        ================================================================== */
+
+		/*
+				Tablette - 768px et +
+				On met la taille du texte à 100% sur le <body>
+		*/
+		@media screen and (min-width:768px) {}
+
+
+		/*
+				Ordinateur portable et de bureau - 992px and +
+				On met la taille du texte à 125% sur le <body>
+		*/
+
+		@media screen and (min-width:992px) {}
+	</style>
+</head>
+
+<body>
+	<h1>TYPOGRAPHIE ADAPTATIVE</h1>
+	<h2>La taille selon les écrans va se calculer automatiquement...</h2>
+	<h3>SANS que l'on doivre rédéfinir toutes les valeurs de <code>font-size</code> pour toutes les balises de titres ou
+		de textes...</h2>
+		<p>
+			Il est difficile de savoir quelle devrait être la taille du texte sur le Web.
+		</p>
+		<p>Si quelqu'un utilise un <strong>petit écran</strong>, il y a fort à parier que son écran sera assez proche de ses
+			yeux...</p>
+		<p>Mais à mesure que les <strong>écrans</strong> deviennent de plus en plus grands, il est plus difficile d'établir
+			cette connexion.
+			Un écran de la taille d'un <strong>ordinateur portable</strong> sera probablement assez proche de l'utilisateur,
+			mais pour un <strong>écran large de bureau</strong>, les gens seront éventuellement assis à une bonne distance
+			de l'écran, beaucoup plus loin que celle d'un portable.</p>
+		<p>Pourtant, bien que vous ne puissiez pas savoir avec certitude à quelle distance quelqu'un se trouve d'un écran,
+			vous pouvez essayer d'utiliser des tailles de texte qui, <em>espérons-le</em>, se révéleront appropriées. </p>
+		<p>Utilisez des <strong>tailles de texte plus petites</strong> pour les <strong>écrans plus petits</strong> et des
+			<strong>tailles de texte plus grandes</strong> pour les écrans
+			<strong>plus grands</strong>. Vous pouvez utiliser des <strong>requêtes médias</strong> pour modifier la
+			propriété font-size à mesure que la
+			taille de l'écran s'élargit.
+		</p>
+		<p>La <strong>PREMIÈRE approche</strong> ici est donc de définir à la racine du document (balise &lt;html&gt;) une
+			taille de fonte de base,
+			généralement <code>font-size:16px;</code> qui correspond à la valeur de base de
+			la majorité des navigateurs. <br><br> Ensuite, les différentes requêtes médias feront les ajustements de
+			<strong>pourcentage</strong> de taille du texte sur la balise &lt;body&gt; selon les différentes
+			<strong>largeur</strong> d'écrans...<br> <strong>Bien sur les valeurs de pourcentage seront déterminées selon la
+				mise en page souhaitée...</strong>
+		</p>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>4a - Images adaptatives (changement de résolution)</title>
+	<!-- Polices Google Roboto/Roboto Slab -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet" />
+	<style>
+		/* Normalisation supplémentaire 
+    =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles de base
+    =============================================== */
+		html {
+			width: 100vw;
+			font-family: "Roboto", sans-serif;
+			font-size: clamp(14px, 0.75rem + 1vw, 22px);
+		}
+
+		h2,
+		h3,
+		h4 {
+			font-family: "Roboto Slab", serif;
+		}
+
+		p {
+			margin-bottom: 0.5rem;
+		}
+
+		a,
+		a:hover,
+		a:visited,
+		a:link {
+			text-decoration: none;
+			color: inherit;
+			transition: color 400ms;
+		}
+
+		/* Styles spécifiques à la page
+    =============================================== */
+		#conteneur {
+			width: 85vw;
+			margin: 20px auto;
+		}
+
+		/* Barre de logo/nav */
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-bottom: 10px;
+			margin-bottom: 40px;
+			border-bottom: 4px solid darkorange;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		nav a {
+			margin-left: 10px;
+		}
+
+		a:hover {
+			color: darkorange;
+		}
+
+		/* Contenu principal */
+		section h2 {
+			font-size: 2rem;
+			line-height: 1.25;
+		}
+
+		section h4 {
+			font-size: 1rem;
+			line-height: 1.25;
+			margin: min(2vw, 1rem) 0;
+			color: #777;
+			font-weight: 400;
+			text-transform: uppercase;
+		}
+
+		article {
+			display: flex;
+			justify-content: space-between;
+			column-gap: 2rem;
+			margin: 2rem 0;
+		}
+
+		div.info {
+			width: 50%;
+		}
+
+		div.info h3 {
+			margin-bottom: 1rem;
+		}
+
+		div.illustration {
+			width: 50%;
+			height: 30vh;
+			border: 2px solid orange;
+			padding: 0.5rem;
+			border-radius: 0.5rem;
+		}
+
+		/* 
+			Exemple 1 : importance de limiter les dimensions de l'image.	
+		*/
+		.exemple1 div.illustration img {
+			/* 
+				On ne peut fixer les dimensions aux dimensions du conteneur : 
+				avec width/height ---> distorsion de l'aspect de l'image 
+			*/
+			/* 
+				width: 100%;
+        height: 100%; 
+			*/
+
+			/* 
+				La solution dans ce cas est de donner une limite supérieure aux
+				dimensions de l'image, par contre ---> l'image ne couvre pas le
+				conteneur.
+			*/
+		}
+
+		/* 
+				Exemple 2 : propriété object-fit 
+		*/
+		.exemple2 div.illustration img {
+			width: 100%;
+			height: 100%;
+			/* Utiliser object-fit pour que l'image soit contenue dans sa boîte parent */
+
+			/* 
+				On peut aussi positionner l'image avec object-position 
+        (y revenir après l'exemple 4 plus loin) 
+			*/
+		}
+
+		/* 
+			Exemple 3 : propriété object-fit
+		*/
+		.exemple3 div.illustration img {
+			width: 100%;
+			height: 100%;
+			/* 
+				Utiliser object-fit pour que l'image couvre le contenur 
+        complètement sans déformation 
+			*/
+		}
+
+		/* 
+			Exemple 4 : propriété object-fit (cover) avec choix du point 
+			de départ du recadrage de l'image
+		*/
+		.exemple4 div.illustration img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			/* 
+				Utiliser object-position pour s'assurer que la barque blanche 
+        reste entièrement (ou en tout cas principalement) visible dans l'image 
+			*/
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px;
+			border: 2px solid transparent;
+			border-radius: 5px;
+			text-transform: uppercase;
+			font-size: 0.7rem;
+			margin: 10px 0;
+		}
+
+		.btn-lire-article {
+			color: darkorange;
+			border-color: darkorange;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="conteneur">
+		<header>
+			<h1><a href="">Carnet de voyage</a></h1>
+			<nav>
+				<a href="#bio">Bio</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
+		<section class="vedette">
+			<h2>Une semaine dans le &laquo;&nbsp;Bas du Fleuve&nbsp;&raquo;</h2>
+			<h4>Au fil du Saint-Laurent</h4>
+			<article class="exemple1">
+				<div class="info">
+					<h3>Limiter les dimensions de l'image</h3>
+					<p>
+						Utiliser les propriétés <code>width</code>, <code>height</code>, <code>min-width</code>,
+						<code>min-height</code>, <code>max-width</code>, <code>max-height</code> pour limiter les dimensions de
+						l'image.
+					</p>
+					<p>
+						En effet, on ne peut pas toujours être sûr des dimensions réelles de l'image, surtout pour les pages Web
+						dont le
+						contenu est généré dynamiquement (à travers un gestionnaire de contenu par exemple).
+					</p>
+					<div class="btn btn-lire-article">Lire le récit</div>
+				</div>
+				<div class="illustration">
+					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+				</div>
+			</article>
+			<article class="exemple2">
+				<div class="info">
+					<h3>Propriété <code>object-fit: contain</code></h3>
+					<p>
+						Utiliser la propriété <code>object-fit</code> pour limiter l'image dans son conteneur, quitte à avoir des
+						bandes
+						horizontales/verticales vides.
+					</p>
+					<p>
+						Dans cet exemple, on tient à avoir la largeur et la hauteur de l'image à 100%, mais pour éviter d'étirer
+						l'image, on utilise la propriété CSS <code>object-fit</code>.
+					</p>
+					<div class="btn btn-lire-article">Lire le récit</div>
+				</div>
+				<div class="illustration">
+					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+				</div>
+			</article>
+			<article class="exemple3">
+				<div class="info">
+					<h3>Propriété <code>object-fit: cover</code></h3>
+					<p>
+						Utiliser la propriété <code>object-fit</code> pour tout le conteneur avec l'image, quitte à rogner l'image
+						verticalement ou horizontalement.
+					</p>
+					<p>
+						Dans cet exemple, on tient à avoir la largeur et la hauteur de l'image à 100%, mais pour éviter d'étirer
+						l'image, on peut avoir recours à la propriété CSS <code>object-fit</code>.
+					</p>
+					<div class="btn btn-lire-article">Lire le récit</div>
+				</div>
+				<div class="illustration">
+					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+				</div>
+			</article>
+			<article class="exemple4">
+				<div class="info">
+					<h3>Propriété <code>object-position</code></h3>
+					<p>
+						Utiliser la propriété <code>object-position</code> pour spécifier le placement de l'image si la propriété
+						<code> object-fit: contain</code> est utilisée, ou encore le point à partir duquel l'image sera rognée dans
+						le
+						cas de <code>object-fit: cover</code>.
+					</p>
+					<p>
+						Dans cet exemple, on veut que la <i>barque blanche</i> soit toujours en focus dans l'image, et on utilise
+						donc
+						la propriété <code>object-position: bottom left</code>.
+					</p>
+					<div class="btn btn-lire-article">Lire le récit</div>
+				</div>
+				<div class="illustration">
+					<img src="parc-du-bic/parc-du-bic_w_1240.jpg" alt="Barque blanche abandonnée au Parc national du Bic" />
+				</div>
+			</article>
+		</section>
+	</div>
+</body>
+
+</html>
