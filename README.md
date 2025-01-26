@@ -10,6 +10,5 @@
 ### Semaine 1 :heavy_check_mark:
 >Révision : mise en page *flex*, transformations et transitions CSS, JavaScript.
 
-
 ### Semaine 2 :checkered_flag:
 >Mise en page adaptative : requêtes média, typographie, images. 
