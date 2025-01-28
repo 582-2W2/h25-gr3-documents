@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2d - Menu adaptatif</title>
+
+	<style>
+		/* Normalisation supplémentaire 
+    =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles de base pour téléphone
+    =============================================== */
+		html {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			/*Calcul automatique de la taille de la police à la racine*/
+			font-size: clamp(14px, 0.75rem + 1vw, 22px);
+			background-color: #eed7f1;
+			color: #eed7f1;
+		}
+
+		header {
+			min-height: 10vh;
+			width: 100%;
+			background-color: black;
+			padding: 2vh;
+		}
+
+
+		nav {
+			width: 100%;
+			background-color: #995db5;
+
+			/*
+				Conteneurs en colonne
+			*/
+		}
+
+		a {
+			display: block;
+			text-decoration: none;
+			padding: 3vmin;
+			font-size: 1.5rem;
+			text-align: center;
+			background-color: #995db5;
+			color: #eed7f1;
+			border-top: 1px solid rgba(255, 255, 255, 0.3);
+			border-bottom: 1px solid rgba(60, 25, 80, 0.1);
+
+			/*
+				Effet de transition sur 1/2 seconde
+			*/
+
+		}
+
+		/*Au survol du bouton ou lorsqu'il est activé*/
+		a:hover,
+		a:active {
+			color: rgb(60, 25, 80);
+			background-color: #ca7ad5;
+		}
+
+		/* Styles pour les écrans plus larges
+    =============================================== */
+
+		/*
+			Tablette - 768px et +
+			Le menu est un conteneur flex en rangée et
+			ses items peuvent d'étirer pour atteindre la même largeur
+			et on leur enlève la bordure du haut
+				
+		*/
+
+
+		/*
+			Ordinateur portable et de bureau - 992px and +
+			Les items du menu sont alignés à droite,
+			ils ne peuvent plus s'étirer et on leur met
+			une bordure à gauche : 1px solid rgba(60, 25, 80, 0.5);
+
+		*/
+	</style>
+</head>
+
+<body>
+	<main>
+		<header>
+			<h1>Menu <span>responsive</span></h1>
+		</header>
+
+		<nav>
+			<a href="#">Souriant <span>&#128512;</span></a>
+			<a href="#">Content <span> &#128515;</span></a>
+			<a href="#">Confus <span>&#128533;</span></a>
+			<a href="#">Étourdi <span>&#128565;</span></a>
+		</nav>
+	</main>
+</body>
+</html>

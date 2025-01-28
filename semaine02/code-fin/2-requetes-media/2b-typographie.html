@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2b - Requêtes médias et ajustement du texte</title>
+
+	<style>
+		/* Normalisation supplémentaire 
+    =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles de base
+    =============================================== */
+		html {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		}
+
+
+		/*Style du texte pour les téléphones - CSS par défaut*/
+		p {
+			margin: 2%;
+			padding: 2%;
+			border: 0.5rem solid #000000;
+			line-height: 1.5;
+		}
+
+		/* Styles pour les écrans plus larges
+    =============================================== */
+
+		/*
+			Tablette - 768px et +
+			On met le texte sur 2 colonnes avec des gouttières de 5%
+		*/
+		@media screen and (min-width: 768px) {
+			p {
+				columns: 2;
+				column-gap: 5%;
+			}
+		}
+
+
+		/*
+			Ordinateur portable et de bureau - 992px and +
+			On met le texte sur 3 colonnes avec des gouttières de 5%
+			Et, on justifie le texte
+    	*/
+		@media screen and (min-width:992px) {
+			p {
+				columns: 3;
+				column-gap: 5%;
+				text-align: justify;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+	<h1>Requêtes médias pour ajuster la disposition du texte</h1>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit est pharetra sem dapibus, id maximus
+		libero ullamcorper. Proin dictum porta posuere. Vivamus in placerat arcu, eget tincidunt arcu. In eleifend
+		lectus a est rhoncus, sit amet porta nisi dictum. Sed sit amet luctus quam. Morbi dictum purus sed nulla
+		convallis vestibulum. Vestibulum placerat laoreet ex, nec mattis mi fringilla efficitur. Curabitur condimentum
+		eget elit a iaculis. Aliquam ut pretium eros, eu pellentesque est. Cras ultricies lorem facilisis neque
+		tincidunt, eget egestas ligula lacinia. Proin fringilla tempus elit, tempus cursus orci vehicula eu.
+
+		Morbi malesuada, ipsum vel fermentum congue, urna lorem blandit velit, sed tristique arcu ipsum nec nulla.
+		Integer sed velit lacus. Donec mattis vitae felis eu aliquam. Sed facilisis orci quam, ac vehicula felis viverra
+		quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut quis laoreet tellus, in congue purus.
+		Nullam ac consectetur risus. Phasellus bibendum fringilla libero at sodales.
+
+		Praesent quis convallis leo. Donec hendrerit rhoncus egestas. Aliquam dignissim, tortor ac molestie ornare,
+		tortor dolor dignissim erat, ultrices tincidunt turpis tellus a nulla. Sed quis semper diam, a varius sem. Sed
+		eu tempus leo. Proin dictum, nulla ac volutpat pulvinar, metus est rutrum diam, eget rhoncus orci augue vel
+		magna. Donec pharetra magna et tellus facilisis, et egestas tellus interdum. Sed tempus nunc vel lectus
+		fermentum, sed luctus lectus maximus. Nam nec mauris metus.
+	</p>
+</body>
+
+</html>
