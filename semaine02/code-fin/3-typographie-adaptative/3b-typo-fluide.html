@@ -23,16 +23,18 @@
 			line-height: 1.5;
 			margin: 2vh 2vw;
 
-			/*
-				La taille de base des polices de caractères va se calculer automatiquement
-				On a PLUS BESOiN de faire des requêtes médias pour les différentes tailles d'écrans
-				les valeurs min, calcul et max SONT à ajuster et à valider pour chaque projet
-			*/
-
+			font-size: 16px;
 		}
 
 		body {
-			
+			/*
+				La taille de base des polices de caractères va se calculer automatiquement :
+				Avec cette approche on ne fait pas de requêtes médias pour les différentes tailles 
+				d'écrans... 
+				les valeurs de "l'étau" (clamp), à savoir le minimum, la valeur relative, et le 
+				maximum SERONT ajustées et validées pour chaque projet.
+			*/
+			font-size: clamp(14px, 0.5vw + 0.75rem, 24px);
 		}
 
 		p {

@@ -33,7 +33,6 @@
 			padding: 2vh;
 		}
 
-
 		nav {
 			width: 100%;
 			background-color: #995db5;
@@ -41,6 +40,8 @@
 			/*
 				Conteneurs en colonne
 			*/
+			display: flex;
+			flex-direction: column;
 		}
 
 		a {
@@ -73,11 +74,22 @@
 		/*
 			Tablette - 768px et +
 			Le menu est un conteneur flex en rangée et
-			ses items peuvent d'étirer pour atteindre la même largeur
-			et on leur enlève la bordure du haut
+			ses items peuvent d'étirer pour atteindre 
+			la même largeur et on leur enlève la bordure
+			du haut
 				
 		*/
+		@media screen and (min-width: 768px) {
+			nav {
+				flex-direction: row;
+				/* justify-content: space-evenly; */
+			}
 
+			nav a {
+				border-top: none;
+				flex-grow: 1;
+			}
+		}
 
 		/*
 			Ordinateur portable et de bureau - 992px and +
@@ -86,6 +98,16 @@
 			une bordure à gauche : 1px solid rgba(60, 25, 80, 0.5);
 
 		*/
+		@media screen and (min-width: 992px) {
+			nav {
+				justify-content: end;
+			}
+
+			nav a {
+				flex-grow: 0;
+				border-left: 1px solid rgba(60, 25, 80, 0.5);
+			}
+		}
 	</style>
 </head>
 
@@ -103,4 +125,5 @@
 		</nav>
 	</main>
 </body>
+
 </html>

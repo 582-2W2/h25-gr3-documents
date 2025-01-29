@@ -26,7 +26,7 @@
 				La taille de base des polices de caractères est fixée à la
 				valeur par défaut de la majorité des navigateurs : 16px
 			*/
-
+			font-size: 16px;
 		}
 
 		p {
@@ -42,7 +42,7 @@
 			Style du texte pour les téléphones - un peu plus petit à 87,5%
 		*/
 		body {
-
+			font-size: 0.875rem;
 		}
 
 		/* Styles - Taille de la typographie pour les écrans plus larges
@@ -51,7 +51,11 @@
 				Tablette - 768px et +
 				On met la taille du texte à 100% sur le <body>
 		*/
-		@media screen and (min-width:768px) {}
+		@media screen and (min-width:768px) {
+			body {
+				font-size: 1rem;
+			}
+		}
 
 
 		/*
@@ -59,7 +63,9 @@
 				On met la taille du texte à 125% sur le <body>
 		*/
 		@media screen and (min-width:992px) {
-
+			body {
+				font-size: 1.25rem;
+			}
 		}
 	</style>
 </head>

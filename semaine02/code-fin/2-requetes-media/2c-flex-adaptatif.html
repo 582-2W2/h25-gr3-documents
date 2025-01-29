@@ -70,7 +70,7 @@
 			box-shadow: 0 3px 6px 0 rgba(60, 25, 80, 0.4);
 
 			/*S'étire comme item flex*/
-
+			flex-grow: 1;
 		}
 
 
@@ -97,6 +97,12 @@
 			Ordinateur portable et de bureau - 992px and +
 			On met les éléments de la classe .conteneur-flex en rangée
 		*/
+		@media screen and (min-width: 992px) {
+			.conteneur-flex {
+				flex-direction: row;
+			}
+		}
+
 	</style>
 </head>
 
