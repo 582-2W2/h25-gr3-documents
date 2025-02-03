@@ -120,16 +120,18 @@
 				On ne peut fixer les dimensions aux dimensions du conteneur : 
 				avec width/height ---> distorsion de l'aspect de l'image 
 			*/
-			/* 
-				width: 100%;
-        		height: 100%; 
-			*/
+			
+				/* width: 100%;
+        		height: 100%;  */
+			
 
 			/* 
 				La solution dans ce cas est de donner une limite supérieure aux
 				dimensions de l'image, par contre ---> l'image ne couvre pas le
 				conteneur.
 			*/
+			max-width: 100%;
+			max-height: 100%;
 		}
 
 		/* 
@@ -141,6 +143,7 @@
 			/* 
 				Utiliser object-fit pour que l'image soit contenue dans sa boîte parent 
 			*/
+			object-fit: contain;
 			
 			/* 
 				On peut aussi positionner l'image avec object-position 
@@ -158,6 +161,7 @@
 			/* 
 				Utiliser object-fit pour que l'image couvre le conteneur complètement sans déformation 
 			*/
+			object-fit: cover;
 		}
 
 		/* 
@@ -172,6 +176,7 @@
 				Utiliser object-position pour s'assurer que la barque blanche reste 
 				entièrement visible dans l'image (ou en tout cas le point focal de l'image)
 			*/
+			object-position: bottom left;
 		}
 
 		.btn {

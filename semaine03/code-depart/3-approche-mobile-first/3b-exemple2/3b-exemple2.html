@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3b - Démo Mobile-First #2</title>  
+
+    <!-- KitCode Font Awesome V.5 -->
+    <script src="https://kit.fontawesome.com/54ef7cb7a3.js" crossorigin="anonymous"></script>
+
+    <style>
+/*Normalisation supplémentaire*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Styles de base
+=============================================== */
+html {
+    width: 100vw;
+    height: 100vh;
+    /*Calcul automatique de la taille du texte à la racine du document*/
+    font-size: clamp(14px, 0.75rem + 1vw, 22px);
+}
+
+body {
+    font-family: Sans-serif;
+    background: #ccc;
+}
+
+h1 {
+    color: #fff;
+    text-shadow: 1px 1px 1px #aaa;
+    margin: 1rem;
+}
+
+h2 {
+    background: #B2D33A;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+p {
+    padding: 0.5rem;
+}
+
+a {
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #B2D33A;
+    /*Transition au survol sur 400ms*/
+    transition: background-color 400ms, color 400ms;
+}
+
+a:hover, a:active {
+    background-color: #222;
+    color: #B2D33A;
+}
+
+article {
+    background: #666;
+}
+
+aside {
+    background: #eee;
+}
+
+footer {
+    background: #B2D33A;
+    color: #444;
+    font-size: 2rem;
+    padding: 0.2rem 0;
+}
+
+
+
+/* Styles de base pour téléphone
+=============================================== */
+
+body {
+    /*La hauteur minimale est celle du viewport*/
+    min-height: 100vh;
+
+    /* Conteneur flex en colonne*/
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    /* Conteneur flex en colonne*/
+    display: flex;
+    flex-direction: column;          
+}
+
+.menu {
+    /*Largeur du périphérique*/
+    width: 100%;
+    /* Conteneur flex en colonne*/
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+article,
+aside {
+    min-height: 40vh;
+    /*Ces balises peuvent s'étirer*/
+
+}
+
+footer {
+    /* Conteneur flex en rangée (valeur par défaut)*/
+    display: flex;
+
+    /*Ceux-ci sont espacés également dans le bas de page*/
+    justify-content: space-evenly;
+}
+
+
+/* Styles pour les écrans plus larges
+=============================================== */
+
+/*
+    Tablette - 768px et +
+    Les enfants du menu s'affichent en rangée et, ils
+    peuvent s'étirer, sans rétrécir pour occuper le même espace
+    
+*/
+
+@media screen and (min-width: 768px) {
+
+}
+
+
+/*
+    Ordinateur portable et de bureau - 992px and +
+    On change la direction flex du <main> en rangée avec la possibilité de saut de ligne
+    Le main peut s'étirer pour prendre toute la place restante en hauteur
+    L'article peut s'étirer 2 X plus que le aside
+    Les icônes sont centrés dans le pied de page avec un peu d'espace entre eux, le tout avec des propriétés flexbox
+    Enfin, on met une bordure blanche de 1px à gauche des titres H2
+
+*/
+@media screen and (min-width: 992px) {
+    main {
+
+    }
+
+
+    article {
+
+    }
+
+    footer {
+
+    }
+
+
+    h2 {
+        border-left: 1px solid white;
+    }
+}
+
+    </style>
+
+</head>
+
+<body>
+    <h1>Démo flexbox et "mobile first"</h1>
+    <nav class="menu">
+      <a href="#">À propos</a>
+      <a href="#">Services</a>
+      <a href="#">Projets</a>
+      <a href="#">Carrières</a>
+      <a href="#">Contacts</a>
+    </nav>
+
+    <main>
+        <article>
+            <h2>ARTICLE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed ex turpis. Cras luctus nibh lectus, in ullamcorper ex tempor eleifend. Nulla bibendum, eros a consequat vestibulum, orci massa fermentum quam, sed commodo nunc ex vitae nisl. Aliquam ullamcorper interdum est nec tincidunt.</p>
+        </article>
+        <aside>
+            <h2>ASIDE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed ex turpis.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <i class="fab fa-twitter-square"></i>
+        <i class="fab fa-facebook-square"></i>
+        <i class="fab fa-linkedin"></i>
+    </footer>
+
+</body>
+
+</html>

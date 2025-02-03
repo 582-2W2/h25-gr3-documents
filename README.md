@@ -10,5 +10,9 @@
 ### Semaine 1 :heavy_check_mark:
 >Révision : mise en page *flex*, transformations et transitions CSS, JavaScript.
 
-### Semaine 2 :construction:
+### Semaine 2 :heavy_check_mark:
 >Mise en page adaptative : requêtes média, typographie, images. 
+
+### Semaine 3 :checkered_flag:
+>Mise en page adaptative : l'approche "Mobile First".
+

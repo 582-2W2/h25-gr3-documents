@@ -138,10 +138,24 @@
 					Utiliser les éléments PICTURE/SOURCE/IMG avec des contraintes
 					média appropriées et l'attribut SRCSET.
 				-->
-				<img 
-					src="notre-dame-des-7-douleurs/notre-dame-des-7-douleurs_mobile.jpg"
-					alt="Paysage de Notre-Dame-des-Septs-Douleurs"
-				/>
+				<picture>
+					<source 
+						media="(min-width: 1240px)" 
+						srcset="notre-dame-des-7-douleurs/notre-dame-des-7-douleurs_grand.jpg"
+					>
+					<source 
+						media="(min-width: 800px)" 
+						srcset="notre-dame-des-7-douleurs/notre-dame-des-7-douleurs_bureau.jpg"
+					>
+					<source 
+						media="(min-width: 400px)" 
+						srcset="notre-dame-des-7-douleurs/notre-dame-des-7-douleurs_tablette.jpg"
+					>
+					<img 
+						src="notre-dame-des-7-douleurs/notre-dame-des-7-douleurs_mobile.jpg"
+						alt="Paysage de Notre-Dame-des-Septs-Douleurs"
+					/>
+				</picture>
 			</section>
 			</section>
 	</div>
