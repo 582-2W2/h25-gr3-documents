@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>2a - Les propriétés des items flex</title>
+
+        <style>
+            /* Normalisation supplémentaire 
+            *====================================================
+            */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Styles de base
+            *====================================================
+            */
+
+            html {
+                /*
+                * La taille de base des polices de caractères va se calculer automatiquement
+                * On a PLUS BESOiN de faire des requêtes médias pour les différentes tailles d'écrans
+                * les valeurs min calcul et max SONT à ajuster pour chaque projet
+                */
+                font-size: clamp(14px, 0.75rem + 0.5vw, 18px);
+            }
+
+            body {
+                max-width: 100vw;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            }
+
+            main {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            header,
+            footer {
+                padding: 2vh 0;
+                background-color: rgba(254, 165, 0, 0.4);
+                text-align: center;
+            }
+
+            header {
+                border-bottom: 4px solid black;
+            }
+
+            footer {
+                border-top: 4px solid black;
+            }
+
+            .conteneur-principal {
+                width: 100%;
+                height: 30vh;
+                background-color: lightgrey;
+                margin-bottom: 2vh;
+                /*Conteneur flex en rangée*/
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            section,
+            article {
+                width: 95%;
+                margin: 8vh auto;
+            }
+
+            h2,
+            h3 {
+                margin: 2vh 0;
+            }
+
+            h2 {
+                text-transform: uppercase;
+            }
+
+            p,
+            ul {
+                margin: 1.5vh 0;
+                line-height: 1.5;
+            }
+
+            li {
+                list-style: none;
+                background-color: rgba(254, 165, 0, 0.4);
+                padding: 0.5vh 1vw;
+                line-height: 1.5;
+            }
+
+            li:nth-child(even) {
+                background-color: rgba(51, 153, 255, 0.4);
+            }
+
+            code {
+                font-size: 1.2em;
+                background-color: #e1e1e1;
+            }
+
+            a:link {
+                text-decoration: none;
+            }
+
+            /* Propriétés des conteneurs flexbox dans les sections
+            *====================================================
+            */
+            .conteneur-flex {
+                width: 45%;
+                height: 80%;
+
+                border: 1px solid black;
+                /*
+                Conteneur flexbox en rangée
+            */
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .colonne {
+                flex-direction: column;
+            }
+
+            /* Propriétés de base des items flexbox
+            *====================================================
+            */
+            .item-flex {
+                color: #fff;
+                text-align: center;
+                padding: 0.4rem 0.6rem;
+            }
+
+            /*Les couleurs de chaque item flexbox*/
+            .conteneur-flex div:nth-child(1) {
+                background-color: #fe6347;
+            }
+
+            .conteneur-flex div:nth-child(2) {
+                background-color: #fea500;
+            }
+
+            .conteneur-flex div:nth-child(3) {
+                background-color: #3399ff;
+            }
+
+            /* Requêtes médias
+            *====================================================
+            */
+
+            @media screen and (min-width: 992px) {
+                main {
+                    width: 85%;
+                }
+            }
+
+            @media screen and (min-width: 1200px) {
+                main {
+                    width: 75%;
+                }
+            }
+
+            /*
+            *--------------------------------------------------------------------------
+            * Propriétés des différents items flexbox dans les sections
+            *--------------------------------------------------------------------------
+            */
+
+            /*Premier enfant de la section 2 et tous les enfants de la troisième section*/
+
+            .f-1-1-auto {
+                /* flex-grow: 1; */
+                flex: 1 1 auto;
+            }
+
+            /*
+            * Items flex des section 4 et 5
+            * Les items peuvent s'étirer et rétrécir
+            * La base du calcul pour l'espace restant est de 0% (flex-basis de chaque item flex)
+            */
+            .f-1-1-0 {
+                flex: 1 1 0;
+            }
+
+            /*
+            * Dans la cinquième section le deuxième item des conteneurs flex
+            * peut prendre 2 fois plus d'espace restant
+            */
+            .f-2-1-0 {
+                flex: 2 1 0;
+            }
+
+            /*
+            * Dans la sixième section la largeur
+            * et la hauteur des items est fixée à 30%
+            * mais le flex-basis est fixé à 20%
+            */
+            .taille-30 {
+                width: 30%;
+                height: 30%;
+            }
+
+            .f-0-1-20 {
+                flex: 0 1 20%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Gérer la taille et la flexibilité éléments flexibles</h1>
+            <h3>Avec la propriété raccourcie <em>flex</em> des items flexbox</h3>
+        </header>
+
+        <main>
+            <article>
+                <h2>Rappel ou précision sur la propriété raccourcie et ses valeurs</h2>
+                <h3>Valeurs de la propriété raccourcie <em>flex</em></h3>
+                <p>
+                    La valeur par défaut de la propriété raccourcie est de <code>flex: 0 1 auto;</code> (flex-grow:0, flex-shrink:1;
+                    flex-basis:auto;)
+                </p>
+                <h3>Propriétés flex-shrink et flex-grow</h3>
+                <ul>
+                    <li>
+                        Nous savons déjà que la propriété <strong>flex-shrink</strong> permet à un item flex de rétrécir si la valeur est
+                        plus grande que 0. Par défaut sa valeur est fixée à 1.
+                    </li>
+                    <li>
+                        Nous savons également que la propriété <strong>flex-grow</strong> permet à un item flex de s'étirer, là aussi si sa
+                        valeur est plus grande que 0. Par défaut a valeur est fixée à 0.
+                    </li>
+                </ul>
+
+                <h3>Mais à quoi correspond la propriété flex-basis?</h3>
+                <p>
+                    Pour faire simple : dans une ligne (<code>flex-direction:row;</code>), <code>flex-basis</code> fait la même chose que
+                    <code>width</code>. Dans une colonne (<code>flex-direction:column;</code>), <code>flex-basis</code> fait la même chose
+                    que <code>height</code>. Sa valeur par défaut est <code>auto</code>, ce qui signifie que la valeur correspond à la
+                    taille de son contenu en largeur ou en hauteur, selon l'axe principal du conteneur parent.
+                </p>
+                <p>
+                    Comme nous l'avons appris, <strong>tout</strong> dans Flexbox est lié à l'<strong>axe principal</strong> (en rangée ou
+                    en colonne). Par exemple, <code>justifiy-content</code> distribuera les enfants horizontalement pour un conteneur flex
+                    en rangée ou verticalement pour un conteneur flex en colonne.
+                </p>
+                <p>
+                    Les propriétés <code>width</code> et <code>height</code> ne suivent pas cette règle... <code>width</code> affectera
+                    toujours la taille horizontale d'un élément HTML. Il ne devient pas soudainement <code>height</code> lorsque nous
+                    inversons <code>flex-direction</code> de <code>row</code> à <code>column</code>.
+                </p>
+                <h2>Grandir pour occuper l'espace restant... comment ça se calcule?</h2>
+                <p>
+                    Par défaut, les items d'un conteneur flex seront réduits à leur taille minimale le long de l'axe principal. Cela crée
+                    souvent de l'espace exédentaire. Nous pouvons spécifier comment cet espace doit être réparti avec la propriété
+                    <code>flex-grow</code>.
+                </p>
+                <h3>NOTION D'ESPACE RESTANT???</h3>
+                <ul>
+                    En théorie, la notion d’espace restant au sein d’un conteneur ne semble pas très complexe : si ses enfants n’occupent
+                    pas tout l'espace, alors il reste de la place. Rien n’est plus élémentaire. En pratique et dans le monde d’un conteneur
+                    flex c’est sensiblement plus compliqué et cela nécessite quelques mises au point préalables :
+                    <li>
+                        L’espace restant au sein d’un conteneur flex est (uniquement) calculé à partir des valeurs de
+                        <strong>flex-basis</strong> de ses enfants (par exemple: largeur du conteneur flex MOINS la somme des
+                        <strong>flex-basis</strong> des items flex enfants, si le conteneur flex est en rangée).;
+                    </li>
+                    <li>
+                        L’espace restant peut être positif ou négatif selon la valeur totale des flex-basis. Il y aura alors soit de
+                        l’espace en trop, soit de l’espace manquant pour les items flex. C'est pour cela que la valeur par défaut de la
+                        propriété <strong>flex-shrink</strong> est fixée à 1.
+                    </li>
+                </ul>
+
+                <h3>Calcul de flex-grow</h3>
+                <ul>
+                    Pour rappel, la propriété
+                    <strong>flex-grow</strong>
+                    permet à un enfant items flex de s'élargir (<strong>flex-direction:row</strong>) ou de s'étirer
+                    (<strong>flex-direction:column</strong>) pour occuper une proportion de l’espace restant. La taille d’un élément doté de
+                    flex-grow est régie par les
+                    <strong>trois principes</strong>
+                    suivants :
+                    <li>
+                        L’espace restant est réparti entre tous les items flex disposant d’une valeur positive de
+                        <strong>flex-grow</strong>;
+                    </li>
+                    <li>
+                        La répartition s’opère par <strong>pondération</strong> : plus la valeur de <strong>flex-grow</strong> est
+                        importante, plus l’élément absorbe de l’espace restant, proportionnellement aux autres éléments flexibles;
+                    </li>
+                    <li>
+                        La portion récupérée par chaque élément flexible <strong>s’ajoute</strong> à la valeur de la propriété
+                        <strong>flex-basis</strong>;
+                    </li>
+                    <li>Le total représente la dimension finale de l’élément.</li>
+                    <li>
+                        <strong>IMPORTANT!</strong> L'étirement se fait dans l'axe principal du conteneur. Donc, en
+                        <strong>largeur</strong> si la direction d'alignement des items est en rangée (<em>row</em>), ou en
+                        <strong>hauteur</strong> dans le cas d'un conteneur en colonnes (<em>column</em>).
+                    </li>
+                </ul>
+            </article>
+
+            <!-- SECTION 1 -->
+            <section>
+                <h2>Section 1</h2>
+                <h3>Valeur par défaut de la propriété flex | <code>flex: 0 1 auto; </code></h3>
+                <p>
+                    Sur <strong>l'axe principal</strong>, les items-flex ne peuvent pas s'étirer, peuvent rétrécir, la base du calcul est
+                    celle de leur contenu.
+                </p>
+
+                <div class="conteneur-principal">
+                    <div class="conteneur-flex">
+                        <div class="item-flex">1</div>
+                        <div class="item-flex">DEUX</div>
+                        <div class="item-flex">LA &lt; div &gt; TROIS</div>
+                    </div>
+
+                    <div class="conteneur-flex colonne">
+                        <div class="item-flex">1</div>
+                        <div class="item-flex">DEUX</div>
+                        <div class="item-flex">LA &lt; div &gt; TROIS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <section>
+                <h2>Section 2</h2>
+                <h3>La majorité des items ont la valeur par défaut de la propriété flex | <code>flex: 0 1 auto; </code></h3>
+                <h3>Le premier item de chaque conteneur peut s'étirer | <code>flex: 1 1 auto; </code></h3>
+                <p>Le premier item va prendre tout l'espace restant en largeur ou en hauteur.</p>
+
+                <div class="conteneur-principal">
+                    <div class="conteneur-flex">
+                        <div class="item-flex f-1-1-auto">1</div>
+                        <div class="item-flex">DEUX</div>
+                        <div class="item-flex">LA &lt; div &gt; TROIS</div>
+                    </div>
+
+                    <div class="conteneur-flex colonne">
+                        <div class="item-flex f-1-1-auto">1</div>
+                        <div class="item-flex">DEUX</div>
+                        <div class="item-flex">LA &lt; div &gt; TROIS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <section>
+                <h2>Section 3</h2>
+                <h3>Les items-flex peuvent s'étirer en tenant compte de leur taille actuelle | <code>flex: 1 1 auto; </code></h3>
+                <p>
+                    L'espace restant dans le conteneur à partager va prendre en considération la largeur OU la hauteur actuelle du contenu
+                    de tous les items. La somme des flex-grow est de 3 (3*1). la majorité des items vont prendre 1/3 de l'espace restant en
+                    largeur pour le conteneur en rangée et, en hauteur pour le conteneur en colonne.
+                </p>
+
+                <div class="conteneur-principal">
+                    <div class="conteneur-flex">
+                        <div class="item-flex f-1-1-auto">1</div>
+                        <div class="item-flex f-1-1-auto">DEUX</div>
+                        <div class="item-flex f-1-1-auto">LA &lt; div &gt; TROIS</div>
+                    </div>
+
+                    <div class="conteneur-flex colonne">
+                        <div class="item-flex f-1-1-auto">1</div>
+                        <div class="item-flex f-1-1-auto">DEUX</div>
+                        <div class="item-flex f-1-1-auto">LA &lt; div &gt; TROIS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4 -->
+            <section>
+                <h2>Section 4</h2>
+                <h3>
+                    Les items-flex peuvent s'étirer ou rétrécir sans tenir compte de leur dimension actuelle | <code>flex: 1 1 0%; </code>
+                </h3>
+                <p>
+                    Le flex-basis des items est 0 (largeur considérée dans le calcul de l'espace restant), tout l'espace restant, soit la
+                    largeur ou la hauteur du conteneur selon l'axe principal va être partagée entre les items-flex.
+                </p>
+                <div class="conteneur-principal">
+                    <div class="conteneur-flex">
+                        <div class="item-flex f-1-1-0">1</div>
+                        <div class="item-flex f-1-1-0">DEUX</div>
+                        <div class="item-flex f-1-1-0">LA &lt; div &gt; TROIS</div>
+                    </div>
+
+                    <div class="conteneur-flex colonne">
+                        <div class="item-flex f-1-1-0">1</div>
+                        <div class="item-flex f-1-1-0">DEUX</div>
+                        <div class="item-flex f-1-1-0">LA &lt; div &gt; TROIS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5 -->
+            <section>
+                <h2>Section 5</h2>
+                <h3>
+                    Les items-flex peuvent s'étirer ou rétrécir sans tenir compte de leur dimension actuelle | <code>flex: 1 1 0%;</code>
+                </h3>
+                <h3>Le 2e item prend 2 fois plus d'espace que les autres | <code>flex: 2 1 0%; </code></h3>
+                <p>
+                    Le flex-basis des items est 0 (largeur ou hauteur considérée dans le calcul de l'espace restant), tout l'espace restant
+                    du conteneur va être partagée entre les items-flex, selon la valeur de leur flex-grow. La somme des flex-grow est de 4
+                    (2*1 + 2). La majorité des items vont prendre 1/4 de l'espace restant en largeur ou en hauteur, sauf le 2e qui va en
+                    prendre la moitié (2/4).
+                </p>
+                <div class="conteneur-principal">
+                    <div class="conteneur-flex">
+                        <div class="item-flex f-1-1-0">1</div>
+                        <div class="item-flex f-2-1-0">DEUX</div>
+                        <div class="item-flex f-1-1-0">LA &lt; div &gt; TROIS</div>
+                    </div>
+
+                    <div class="conteneur-flex colonne">
+                        <div class="item-flex f-1-1-0">1</div>
+                        <div class="item-flex f-2-1-0">DEUX</div>
+                        <div class="item-flex f-1-1-0">LA &lt; div &gt; TROIS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6 -->
+            <section>
+                <h2>Section 6</h2>
+                <h3>Les items-flex ne peuvent pas s'étirer, mais peuvent rétrécir | <code>flex: 0 1 20%; </code></h3>
+                <h3>La largeur <code>width</code> et la hauteur <code>height</code> de base est de 30%</h3>
+                <h3>Le flex-basis <code>flex-basis</code> est 20%</h3>
+                <p>
+                    Même si la largeur ou la hauteur est de 30%... Le flex-basis de 20% a la priorité, ainsi la possibilité de rétrécir
+                    l'emporte
+                </p>
+                <p>Donc, la valeur de <strong>flex-basis</strong> écrase celles de <strong>width</strong> et de <strong>height</strong>.</p>
+                <div class="conteneur-principal">
+                    <div class="conteneur-flex">
+                        <div class="item-flex taille-30 f-0-1-20">1</div>
+                        <div class="item-flex taille-30 f-0-1-20">DEUX</div>
+                        <div class="item-flex taille-30 f-0-1-20">LA &lt; div &gt; TROIS</div>
+                    </div>
+
+                    <div class="conteneur-flex colonne">
+                        <div class="item-flex taille-30 f-0-1-20">1</div>
+                        <div class="item-flex taille-30 f-0-1-20">DEUX</div>
+                        <div class="item-flex taille-30 f-0-1-20">LA &lt; div &gt; TROIS</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            Pour une meilleure compréhension des propriétés Flexbox, consulter le site Web suivant:
+            <a href="http://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">An Interactive Guide to Flexbox</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>2b - Mini-pratique des propriétés des éléments flex</title>
+        <!--Intégration des styles-->
+        <style type="text/css">
+            /* Normalisation supplémentaire 
+            *====================================================
+            */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Styles de base
+            *====================================================
+            */
+            body {
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                background-color: #313444;
+                color: white;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            h1,
+            h4 {
+                padding: 20px 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+
+            div {
+                font-size: 1.5rem;
+                text-align: center;
+                background-color: #d24174;
+                border-radius: 2vmin;
+            }
+
+            /* Styles pour la mise en page et les flex-box*/
+
+            body {
+                min-height: 100vh;
+                /* Contexte flex pour ses enfants en colonne*/
+                display: flex;
+                flex-direction: column;
+            }
+
+            main {
+                border: 1px solid white;
+
+                /* Contexte flex pour ses enfants en rangée*/
+                display: flex;
+                justify-content: space-between;
+                /*Note: On laisse la valeur de align-items à stretch par défaut pour que le contenu prennne toute la place à la verticale (axe secondaire)*/
+
+                /*Gouttières horizontales de 2vmin entre les éléments*/
+                gap: 0 2vmin;
+
+                /*En tant qu'item-flex il peut s'étirer, ce qui va mettre la balise footer en bas de la page
+                on utilise ici la propriété raccourcie flex*/
+                flex: 1 1 auto;
+            }
+
+            .colonneFlex {
+                /*Propriétés en tant que conteneur flexbox*/
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                /*Gouttières verticales de 2vmin entre les éléments*/
+                gap: 2vmin 0;
+
+                /*Étirement en largeur en tant qu'item-flex*/
+                flex: 1 1 0;
+            }
+
+            .itemFlex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1vmin;
+                border: 4px solid white;
+                /*S'étirent comme item flex*/
+                flex: 1 1 auto;
+            }
+
+            /*Propriétés des items qui prennent 1/3 ou 2/3 d'une colonne en hauteur*/
+            .un-tiers {
+                /*Trouver le moyen pour que ces items aient une hauteur d'environ 1/3 d'une colonne*/
+                flex: 1 1 33%;
+                /* flex-basis: 33%; */
+                /* flex: 1 1 auto; */
+            }
+
+            .deux-tiers {
+                /*Trouver le moyen pour que ces items aient une hauteur d'environ 2/3 d'une colonne*/
+                flex: 1 1 67%;
+                /* flex-basis: 67%; */
+                /* flex: 2 1 auto; */
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Révision des propriétés <code>flexbox / flex</code>...</h1>
+        </header>
+
+        <main>
+            <section class="colonneFlex">
+                <div class="itemFlex deux-tiers">
+                    Colonne à ± 2/3 de hauteur de son conteneur flex parent<br /><br />Avec plus de texte que les petits...
+                </div>
+                <div class="itemFlex un-tiers">± 1/3 de hauteur</div>
+            </section>
+
+            <section class="colonneFlex">
+                <div class="itemFlex">100 %</div>
+            </section>
+
+            <section class="colonneFlex">
+                <div class="itemFlex">100%</div>
+            </section>
+
+            <section class="colonneFlex">
+                <div class="itemFlex un-tiers">± 1/3 de hauteur</div>
+                <div class="itemFlex deux-tiers">
+                    Colonne à ± 2/3 de hauteur de son conteneur flex parent<br /><br />Avec plus de texte que les petits...
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <h4>
+                Ajuster les propriétés des éléments (<em>items flex ou autres</em>) pour obtenir le résultat de la capture d'écran. Vérifier
+                vos valeurs avc l'onglet <em>Computed</em> de la console
+            </h4>
+        </footer>
+    </body>
+</html>

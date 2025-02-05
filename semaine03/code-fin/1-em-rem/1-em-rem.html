@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>1 - Différence entre em et rem</title>
+
+        <style>
+            /* Normalisation supplémentaire 
+        =============================================== */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Styles de base
+        =============================================== */
+
+            html {
+                font-size: 16px;
+            }
+
+            body {
+                width: 95vw;
+                margin: 0 auto;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                /*
+                La taille de base des polices de caractères va se calculer automatiquement
+                On a PLUS BESOiN de faire des requêtes médias pour les différentes tailles d'écrans
+                les valeurs min calcul et max SONT à ajuster pour chaque projet
+                */
+                /* font-size: clamp(14px, 0.75rem + 0.5vw, 22px); */
+            }
+
+            main {
+                margin-top: 3vh;
+                display: flex;
+                align-items: center;
+                gap: 0 3vw;
+            }
+
+            p {
+                padding: 1rem 0;
+            }
+
+            div {
+                border: 2px solid blue;
+            }
+
+            main > div {
+                background-color: darkgray;
+            }
+
+            .texte-em > div,
+            .texte-rem > div {
+                background-color: aliceblue;
+            }
+
+            .texte-em > div > div,
+            .texte-rem > div > div {
+                background-color: bisque;
+            }
+
+            /*-----Les boîtes avec des unités em -----*/
+            .texte-em,
+            .texte-em div {
+                font-size: 1.3em;
+                padding: 1.3em;
+            }
+
+            /*-----Les boîtes avec des unités rem -----*/
+            .texte-rem,
+            .texte-rem div {
+                font-size: 1.3rem;
+                padding: 1.3rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Quelle est la différence entre em et rem?</h1>
+            <p>
+                En CSS, <strong>em</strong> représente la taille de police héritée du parent de l'élément. Par exemple, font-size: 2em
+                équivaut à la taille de police du parent multipliée par deux. <strong>rem</strong> est similaire, mais représente à la place
+                la taille de police héritée de l'élément racine, c'est-à-dire &#60;html&#62;.
+            </p>
+            <p>
+                Ainsi le <strong>rem</strong> permet de définir une valeur constante tout le long du document égale à la taille de la police
+                de l'élément racine. Cette unité peut être alors utilisée pour créer des éléments et propriétés CSS responsives puisque
+                qu'elle s'adaptera à la taille de la police du support d'affichage.
+            </p>
+        </header>
+
+        <main>
+            <div class="texte-em">
+                Parent avec <code>font-size</code> et <code>padding</code> de 1.3em
+                <div>
+                    Enfant avec <code>font-size</code> et <code>padding</code> de 1.3em
+                    <div>Petit enfant avec <code>font-size</code> et <code>padding</code> de 1.3em</div>
+                </div>
+            </div>
+
+            <div class="texte-rem">
+                Parent avec <code>font-size</code> et <code>padding</code> de 1.3rem
+                <div>
+                    Enfant avec <code>font-size</code> et <code>padding</code> de 1.3rem
+                    <div>Petit enfant avec <code>font-size</code> et <code>padding</code> de 1.3rem</div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

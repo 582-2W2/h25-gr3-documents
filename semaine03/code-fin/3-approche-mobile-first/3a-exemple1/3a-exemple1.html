@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3a - Démo Mobile-First #1</title>
+
+    <style>
+        /*Normalisation supplémentaire*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* Styles de base
+        =============================================== */
+
+        html {
+            /* width: 100vw; */
+            height: 100vh;
+            /*Calcul automatique de la taille du texte à la racine du document*/
+            font-size: clamp(14px, 0.75rem + 1vw, 22px);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+
+        header {
+            background: coral;
+        }
+
+        article {
+            text-align: left;
+            background: cornflowerblue;
+        }
+
+        aside:nth-of-type(1) {
+            background: moccasin;
+        }
+
+        aside:nth-of-type(2) {
+            background: violet;
+        }
+
+        footer {
+            background: lightgreen;
+        }
+
+        h1,
+        h2,
+        p {
+            padding: 0.5rem;
+        }
+
+
+        /* Styles de base pour téléphone
+        =============================================== */
+
+        body {
+            /*Le body prend au minimum toute la hauteur du viewport*/
+            min-height: 100%;
+
+            /* Conteneur flex pour ses enfants en colonne*/
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            /* Contexte flex pour ses enfants en colonne*/
+            display: flex;
+            flex-direction: column;
+
+            /*En tant qu'item-flex il peut s'étirer, ce qui va mettre la balise footer en bas de la page*/
+            flex: 1 1 auto;
+        }
+
+        /*Tous les enfants de la balise <main> peuvent s'étirer en hauteur ou en largeur*/
+        main > * {
+            flex: 1 1 auto;
+        }
+
+
+        /* Styles pour les écrans plus larges
+        =============================================== */
+
+        /*
+            Tablette - 768px et +
+            Les enfants du conteneur <main> s'affichent en rangée et
+            peuvent faire des sauts de lignes.
+            L'article peut s'étirer pour faire une ligne au complet
+            
+        */
+
+        @media screen and (min-width: 768px) {
+            main {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            main article {
+                flex: 1 1 100%;
+                /* height: auto; */
+            }
+        }
+
+
+        /*
+            Ordinateur portable et de bureau - 992px and +
+            L'article s'étire mais en laissant de la place aux balises aside
+            La première balise aside est placée à gauche de l'article
+
+        */
+
+        @media screen and (min-width: 992px) {
+            main article {
+                flex: 2 1 auto;
+            }
+
+            main aside:first-of-type {
+                order: -1;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Entête</h1>
+    </header>
+
+    <main>
+        <article>
+            <h2>Article</h2>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+        </article>
+        <aside>
+            <h2>Aside 1</h2>
+        </aside>
+        <aside>
+            <h2>Aside 2</h2>
+        </aside>
+    </main>
+
+    <footer>
+        <h2>Pied de page</h2>
+    </footer>
+
+</body>
+
+</html>
