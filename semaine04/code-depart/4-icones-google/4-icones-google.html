@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>04 - Démo Mobile-first 4</title>
+
+	<!-- Ajustement de la taille du viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Intégration des polices d'icônes Google -->
+
+
+	<style>
+		/* Normalisation supplémentaire
+    =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Mise en page de base - Décoration
+    =============================================== */
+
+		html {
+			width: 100vw;
+			height: 100vh;
+			/*Ajustement de la taille des polices à la racine du document*/
+			font-size: clamp(14px, 0.75rem + 1vw, 20px);
+		}
+
+		body {
+			font-family: "Open Sans", sans-serif;
+		}
+
+		header,
+		footer {
+			background-color: #095797;
+			color: white;
+		}
+
+		header>div {
+			padding: 1rem;
+		}
+
+		.logoQuebec {
+			max-height: 4.5rem;
+			max-width: 12.5rem;
+		}
+
+		.titre-entete {
+			background-color: #fff;
+			color: #095797;
+		}
+
+		.material-icons {
+			font-size: 2rem;
+			padding-right: 1rem;
+		}
+
+		nav {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+
+		nav a {
+			text-decoration: none;
+			color: white;
+			font-size: 0.8rem;
+		}
+
+		nav a:hover,
+		nav a:active {
+			border-bottom: 1px solid #fff;
+		}
+
+		main {
+			background-color: #e3eaf0;
+		}
+
+		section {
+			color: #000;
+			background-color: #fff;
+			border: 1px solid #c6cbd1;
+			box-shadow: 0 3px 6px 0 rgb(9, 87, 151, 0.22);
+			min-height: 5vh;
+			padding: 0.5rem;
+		}
+
+		.description {
+			font-size: 0.7rem;
+			padding: 0.5rem 0;
+		}
+
+		footer {
+			font-size: 0.5rem;
+			font-style: italic;
+			text-align: center;
+			padding: 0.8rem 0;
+		}
+
+		/* Mise en page pour les petits périphériques
+    =============================================== */
+
+		body {
+			/*La hauteur et la largeur sont celles du viewport*/
+			width: 100%;
+			height: 100%;
+
+			/* Conteneur flex en colonne*/
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		header {
+			/*Conteneur flex en colonne*/
+			display: flex;
+			flex-direction: column;
+		}
+
+		.entete {
+			/*
+				Conteneur flex en rangée, l'espace restant est
+				réparti entre les enfants ou items flex
+			*/
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.menu-entete {
+			/*
+				Conteneur flex en rangée
+				les enfants sont centrés sur l'axe secondaire
+			*/
+			display: flex;
+			align-items: center;
+		}
+
+		main {
+			/* Conteneur flex en colonne*/
+			display: flex;
+			flex-direction: column;
+			/*Répartition des items flex dans l'espace*/
+			justify-content: space-around;
+			align-items: center;
+
+			/*Le main peut s'étirer pour prendre toute la place restante*/
+			flex-grow: 1;
+		}
+
+		section {
+			/* Conteneur flex en colonne*/
+			width: 90%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		section .titre {
+			/*Conteneur flex en rangée*/
+			display: flex;
+			align-items: center;
+		}
+
+		.description {
+			/*Non affiché sur téléphone*/
+		}
+
+		/* Styles pour les écrans plus larges
+    =============================================== */
+
+		/*
+				Tablette - 768px et +
+				Le <main> est maintenant un conteneur en rangée,
+				ses items flex enfant peuvent sauter de ligne.
+				Les lignes sont réparties dans l'espace.
+				On augmente la taille des sections à une largeur de 40vw.
+				L'alignement principal des sections est maintenant flex-start
+				Enfin, on affiche maintenant les descriptions
+				
+		*/
+
+		@media screen and (min-width: 768px) {
+			main {
+				flex-flow: row wrap;
+				align-content: space-around;
+			}
+
+			section {
+				width: 40vw;
+				justify-content: flex-start;
+			}
+
+			.description {
+				/*Affichage des descriptions*/
+			}
+		}
+
+		/*
+				Ordinateur - 992px et +
+				Les éléments du <main> ne peuvent plus sauter de ligne
+				et ses items flex sont désormais alignés au centre sur l'axe secondaire,
+				et répartis également sur l'axe principal
+				La taille des sections est diminuée à 20vw en largeur et 40vh en hauteur.
+				Enfin, on grossit un peu les icônes de Google à 3rem;
+				
+		*/
+		@media screen and (min-width: 992px) {
+			main {
+				flex-wrap: nowrap;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+
+			section {
+				width: 20vw;
+				height: 40vh;
+			}
+
+			.material-icons {}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="entete">
+			<img class="logoQuebec" src="images/signature-piv.svg" alt="Logo du gouvernement du Québec" />
+
+			<div class="menu-entete">
+				<span class="material-icons"> search </span>
+				<nav>
+					<a href="#">English</a>
+					<a href="#">Nous joindre</a>
+				</nav>
+			</div>
+		</div>
+		<div class="titre-entete">
+			<h1>La maladie à coronavirus (COVID-19) au Québec</h1>
+		</div>
+	</header>
+
+	<main>
+		<section>
+			<div class="titre">
+				<span class="material-icons"> warning_amber </span>
+				<h3>Mesures en vigueur</h3>
+			</div>
+			<div class="description">Connaître les mesures en vigueur par secteur d'activités.</div>
+		</section>
+
+		<section>
+			<div class="titre">
+				<span class="material-icons"> location_on </span>
+				<h3>Test de dépistage</h3>
+			</div>
+			<div class="description">
+				Savoir si vous devez passer un test, en savoir plus sur les tests rapides et déclarer le résultat d'un test
+				rapide.
+			</div>
+		</section>
+
+		<section>
+			<div class="titre">
+				<span class="material-icons"> person_remove </span>
+				<h3>Quand faut-il s'isoler</h3>
+			</div>
+			<div class="description">S'isoler, c'est rester à la maison. Suivez les consignes qui correspondent à votre
+				situation.</div>
+		</section>
+
+		<section>
+			<div class="titre">
+				<span class="material-icons"> vaccines </span>
+				<h3>Se faire vacciner</h3>
+			</div>
+			<div class="description">Prendre rendez-vous en ligne ou trouver une clinique sans rendez-vous.</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>Source d'inspiration: https://www.quebec.ca/sante/problemes-de-sante/a-z/coronavirus-2019/</p>
+	</footer>
+</body>
+
+</html>

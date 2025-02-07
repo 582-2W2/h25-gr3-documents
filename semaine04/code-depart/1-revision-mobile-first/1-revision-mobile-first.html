@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>1 - Mobile-First Révision</title>
+
+	<!-- Ajustement de la taille du viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!--Adapté de: Jack in the flexbox: https://jackintheflexbox.tumblr.com/-->
+
+	<style>
+		/* Normalisation supplémentaire
+            *=============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Styles de base
+            *=============================================== */
+
+		body {
+			margin: 0;
+			background: #fff;
+			font-family: "Century Gothic", helvetica, arial, sans-serif;
+			font-size: 1.1rem;
+		}
+
+		header,
+		nav,
+		section,
+		footer {
+			padding: 10px;
+			border: 2px solid #fff;
+			border-radius: 10px;
+			color: #fff;
+		}
+
+		header {
+			background: dodgerblue;
+			text-align: center;
+		}
+
+		nav {
+			background: orange;
+		}
+
+		nav a {
+			display: block;
+			padding: 0.5rem 1rem;
+			color: #fff;
+			text-decoration: none;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		}
+
+		section {
+			background: hotpink;
+		}
+
+		footer {
+			background: olivedrab;
+			text-align: center;
+		}
+
+		/* Mise en page de base pour téléphone
+    *=============================================== */
+		html {
+			height: 100vh;
+			width: 100vw;
+		}
+
+		body {
+			height: 100%;
+			width: 100%;
+			/* Contexte flex en colonne pour ses enfants */
+			display: flex;
+			flex-direction: column;
+		}
+
+		main {
+			/* Occupe la hauteur restante comme enfant ou item flex */
+
+			/* Contexte flex en colonne pour ses enfants */
+			display: flex;
+			flex-direction: column;
+		}
+
+		nav {
+			width: 100%;
+			text-align: center;
+			/* Contexte flex en colonne pour ses enfants */
+			display: flex;
+			flex-direction: column;
+		}
+
+		section {
+			/* Occupe la hauteur ou la largeur restante */
+		}
+
+		/* Styles pour les écrans plus larges
+    *=============================================== */
+
+		/*
+			Tablette - 768px et +
+			Le menu de navigation est en rangée
+			Chaque élément du menu se sépare l'espace équitablement
+			Et, on leur enlève la ligne du bas.	
+		*/
+
+		/*
+			Ordinateur de bureau - 992px et +
+			L'axe principal du conteneur flex main est en rangée
+			Le menu de navigation revient en colonne avec une largeur de 20vw
+			On remet la ligne en bas des éléments du menus 
+			et on aligne le texte à gauche.
+		*/
+
+		@media (min-width: 992px) {
+			main {}
+
+			nav {}
+
+			nav a {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>Vive le CSS Flexbox!</h1>
+	</header>
+
+	<main>
+		<nav>
+			<a href="#">Salade</a>
+			<a href="#">Tomate</a>
+			<a href="#">Oignon</a>
+			<a href="#">Choucroute</a>
+			<a href="#">Bière?</a>
+		</nav>
+		<section>
+			<h2>Flexbox c'est la vie, Hopla!</h2>
+			<p><code>flex: 1 1 auto;</code></p>
+			<p class="texte">
+				Lorem Elsass ipsum lacus leverwurscht Wurschtsalad mamsell Gal. gewurztraminer turpis, suspendisse commodo
+				Oberschaeffolsheim ornare aliquam semper Miss Dahlias Mauris turpis sagittis kuglopf eleifend dignissim
+				baeckeoffe
+				geht's Richard Schirmeck mollis habitant schnaps ante et sit leo schpeck sit Salu bissame Salut bisamme varius
+				quam.
+				amet elementum nullam bissame bredele Heineken picon bière gal sed risus, condimentum Verdammi ch'ai ac réchime
+				météor
+				barapli s'guelt quam, non Christkindelsmärik blottkopf, Carola tellus rucksack vielmols, Gal !
+			</p>
+		</section>
+	</main>
+
+	<footer>Hopla! Le pied de page!</footer>
+</body>
+
+</html>

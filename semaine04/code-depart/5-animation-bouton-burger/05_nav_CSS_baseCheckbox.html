@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>5 - Prototype de navigation avec bouton "burger"</title>
+
+	<!-- Ajustement de la taille du viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<style type="text/css">
+		/* Normalisation supplémentaire 
+    =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Mise en page - Base et petits périphériques...
+    ====================================================== */
+
+		html {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			width: 100vw;
+			height: 100vh;
+			/*Ajustement de la taille des polices à la racine du document*/
+			font-size: clamp(14px, 0.75rem + 1vw, 20px);
+		}
+
+		body {
+			width: 100%;
+			height: 100%;
+			/*Conteneur flex en colonne*/
+			display: flex;
+			flex-direction: column;
+		}
+
+		.boutonBurger {
+			background: linear-gradient(to bottom,
+					#e84545 0%,
+					#e84545 20%,
+					transparent 20%,
+					transparent 40%,
+					#e84545 40%,
+					#e84545 60%,
+					transparent 60%,
+					transparent 80%,
+					#e84545 80%,
+					#e84545 100%);
+			height: 4rem;
+			width: 4rem;
+			margin: 1%;
+
+			cursor: pointer;
+
+			/*Effet de transition sur la rotation*/
+			transition: transform 1s;
+		}
+
+		.menu {
+			background-color: #e84545;
+			font-size: 5rem;
+			text-align: center;
+
+			/*Pour cet exemple, il prend toute la place restante en hauteur*/
+
+			/*On le place à gauche de l'écran*/
+
+			/*Effet de transition quand la position sur l'axe des X change*/
+			transition: transform 1s;
+		}
+
+		/* Contrôle du menu et du bouton burger...
+		========================================================================== 
+			Le menu... apparaît ou disparaît selon l'état 'checked' de la case à cocher
+			#checkboxPourBoutonBurger. On fait aussi tourner le bouton burger... 
+			Et... pour l'aspect esthétique de la chose... la case à cocher (checkbox) 
+			n'est pas affichée...mais restera fonctionnelle...
+		==========================================================================*/
+
+		#checkboxPourBoutonBurger {}
+
+		#checkboxPourBoutonBurger {}
+
+		#checkboxPourBoutonBurger {}
+
+		/* Ajustements pour les périphériques de plus grande taille ...
+		========================================================================== 
+		Pour les tailles plus grandes le menu apparaît de hauteur normale et le bouton burger disparaît
+		==========================================================================*/
+
+		@media screen and (min-width: 768px) {
+			.boutonBurger {}
+
+			.menu {}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h2>Stratégie de navigation CSS basée sur la pseudo-classe <code>:checked</code></h2>
+		<p>Un élément apparaît ou disparaît selon l'état <em>checked ou non</em> de la case à cocher</p>
+		<p>P.S. Doit être testé avec un viewport de 767px de largeur ou moins...</p>
+	</header>
+
+	<!--
+		La case à cocher doit être au même niveau hiérarchique que l'élément à contrôler : 
+		enfant du même parent (sibling), notamment parce que dans le code CSS on utilise le combinateur '~'
+  -->
+
+	<input type="checkbox" id="checkboxPourBoutonBurger" />
+	<label for="checkboxPourBoutonBurger" class="boutonBurger"></label>
+
+	<div class="menu">MENU</div>
+</body>
+
+</html>
