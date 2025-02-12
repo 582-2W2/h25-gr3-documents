@@ -38,16 +38,25 @@
 
 		.boutonBurger {
 			background: linear-gradient(to bottom,
-					#e84545 0%,
-					#e84545 20%,
-					transparent 20%,
-					transparent 40%,
-					#e84545 40%,
-					#e84545 60%,
-					transparent 60%,
-					transparent 80%,
-					#e84545 80%,
-					#e84545 100%);
+					transparent 0%,
+					transparent 1%,
+					#e84545 1%,
+					#e84545 15%,
+					transparent 15%,
+					transparent 29%,
+					#e84545 29%,
+					#e84545 43%,
+					transparent 43%,
+					transparent 57%,
+					#e84545 57%,
+					#e84545 71%,
+					transparent 71%,
+					transparent 85%,
+					#e84545 85%,
+					#e84545 99%,
+					transparent 99%,
+					transparent 100%
+					);
 			height: 4rem;
 			width: 4rem;
 			margin: 1%;
@@ -55,7 +64,7 @@
 			cursor: pointer;
 
 			/*Effet de transition sur la rotation*/
-			transition: transform 1s;
+			transition: rotate 0.5s;
 		}
 
 		.menu {
@@ -64,11 +73,16 @@
 			text-align: center;
 
 			/*Pour cet exemple, il prend toute la place restante en hauteur*/
+			flex: 1 1 auto;
 
 			/*On le place à gauche de l'écran*/
+			/* transform: translateX(-100%); */
+			/* Propriété "translate" au lieu de "transform" */
+
+			translate: -100% 0;
 
 			/*Effet de transition quand la position sur l'axe des X change*/
-			transition: transform 1s;
+			transition: translate 1s;
 		}
 
 		/* Contrôle du menu et du bouton burger...
@@ -79,11 +93,22 @@
 			n'est pas affichée...mais restera fonctionnelle...
 		==========================================================================*/
 
-		#checkboxPourBoutonBurger {}
+		#checkboxPourBoutonBurger {
+			display: none;
+		}
 
-		#checkboxPourBoutonBurger {}
+		#checkboxPourBoutonBurger:checked + label {
+			/* unités : 'turn' (nombre de tours) ou 'deg' (montant de degrés) */ 
+			/* transform: rotate(0.25turn);  */
 
-		#checkboxPourBoutonBurger {}
+			/* Pour les transformations de type : scale, rotate, et translate : */
+			rotate: 90deg;
+		}
+
+		#checkboxPourBoutonBurger:checked ~ div.menu {
+			/* transform: translateX(0); */
+			translate: 0;
+		}
 
 		/* Ajustements pour les périphériques de plus grande taille ...
 		========================================================================== 
@@ -91,9 +116,14 @@
 		==========================================================================*/
 
 		@media screen and (min-width: 768px) {
-			.boutonBurger {}
+			.boutonBurger {
+				display: none;
+			}
 
-			.menu {}
+			.menu {
+				transform: translateX(0);
+				flex: 0 1 auto;
+			}
 		}
 	</style>
 </head>

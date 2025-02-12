@@ -7,7 +7,7 @@
 > :construction: = en cours
 > :heavy_check_mark: = complété
 
-### Semaine 4 :checkered_flag:
+### Semaine 4 :heavy_check_mark:
 >Mise en page adaptative (suite). Police d'icônes (Google Material Icons). Sélecteurs d'adjacence CSS. Pseudo-classe `:checked`. Icône de menu adaptatif ('burger'). Affichage d'un menu adaptatif à l'aide d'une application des sélecteurs d'adjacence et des cases à cocher HTML.
 
 ### Semaine 3 :heavy_check_mark:
