@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>2a - Menu de navigation adaptatif - Exemple 1</title>
+
+        <!-- Ajustement de la taille du viewport-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <style>
+            /* Normalisation supplémentaire
+        =============================================== */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Styles de base
+        =============================================== */
+            html {
+                width: 100vw;
+                height: 100vh;
+                font-size: clamp(14px, 0.5rem + 1vw, 18px);
+            }
+
+            body {
+                width: 100%;
+                min-height: 100%;
+                background-color: #eee;
+                color: #333;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+                /*Conteur flex en rangée*/
+                display: flex;
+
+                /*On affiche pas le contenu qui déborde sur l'axe des X*/
+            }
+
+            main.contenu {
+                min-height: 100vh;
+                /*padding: 0.5rem 1rem;*/
+                background-color: #eee;
+                /*S'étire pour prendre toute la place en largeur*/
+                flex-grow: 1;
+
+                /*Conteneur flex en colonne*/
+                display: flex;
+                flex-direction: column;
+
+                /*Effet de transition*/
+            }
+
+            section {
+                /*S'étire pour prendre toute la place en hauteur*/
+                flex-grow: 1;
+            }
+
+            .menu,
+            footer {
+                background: #333;
+                color: #ddd;
+            }
+
+            nav {
+                width: 10rem;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem 1rem;
+                margin-bottom: 0.2rem;
+                text-decoration: none;
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #ddd;
+                text-align: center;
+            }
+
+            h2 {
+                padding-top: 0.5rem;
+                text-align: center;
+            }
+
+            h1,
+            h3 {
+                padding: 0 0.5rem;
+            }
+
+            li {
+                margin: 0.5rem 2rem;
+                list-style-type: "\2771  ";
+            }
+
+            footer {
+                padding: 0.5rem;
+                font-size: small;
+                font-style: italic;
+                text-align: center;
+            }
+
+            /* Mise en page pour les petits périphériques
+        =============================================== */
+            .menu {
+            }
+
+            .bouton-burger {
+                display: block;
+                height: 2rem;
+                width: 2rem;
+                margin: 0.5rem;
+                background: linear-gradient(
+                    to bottom,
+                    #333 0%,
+                    #333 20%,
+                    transparent 20%,
+                    transparent 40%,
+                    #333 40%,
+                    #333 60%,
+                    transparent 60%,
+                    transparent 80%,
+                    #333 80%,
+                    #333 100%
+                );
+                cursor: pointer;
+                transition: transform 400ms;
+            }
+
+            /* Contrôle du menu et du bouton burger...
+        ========================================================================== 
+            Le menu...est en position absolute et caché sous le contenu...
+            Il apparaît ou disparaît selon l'état 'checked' de la case à cocher
+            #cc-pour-bouton-burger. La manière de le faire apparaître est de déplacer
+            le contenu vers la droite
+        ==========================================================================*/
+
+            #cc-pour-bouton-burger {
+            }
+
+            /*
+            * On déplace le contenu vers la droite 
+            * Le déplacement correspond à la largeur du menu: 10rem
+            */
+            #cc-pour-bouton-burger {
+            }
+
+            #cc-pour-bouton-burger {
+                /*On cache la case à cocher*/
+                display: none;
+            }
+
+            /* Styles pour les écrans plus larges
+        =============================================== */
+
+            /*
+            On enlève la position en absolue du menu,
+            celui-ci revient se positionner à gauche du contenu global
+            comme premier enfant flex de la rangée...
+            On enlève l'affichage du bouton burger          
+        */
+
+            @media screen and (min-width: 768px) {
+                .menu {
+                }
+
+                .bouton-burger {
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="menu">
+            <h2>Menu</h2>
+            <nav>
+                <a href="#">Bouton 1</a>
+                <a href="#">Bouton 2</a>
+                <a href="#">Bouton 3</a>
+                <a href="#">Bouton 4</a>
+                <a href="#">Bouton 5</a>
+            </nav>
+        </div>
+
+        <!--Case à cocher-->
+        <input type="checkbox" id="cc-pour-bouton-burger" />
+
+        <main class="contenu">
+            <!-- Bouton burger-->
+            <label for="cc-pour-bouton-burger" class="bouton-burger"></label>
+
+            <header id="header">
+                <h1>Navigation <em>responsive</em> | Exemple 1</h1>
+            </header>
+
+            <section>
+                <h3>Navigation basée sur :</h3>
+                <ul>
+                    <li>CSS Flexbox pour la disposition.</li>
+                    <li>
+                        Case à cocher (<code>checkbox</code>) et pseudo-classe CSS (<code>:checked</code>) pour le contrôle de l'affichage
+                        du menu sur petit écran.
+                    </li>
+                </ul>
+
+                <h3>Le principe général est celui-ci :</h3>
+                <ul>
+                    <li>
+                        &lt;body&gt; est le flex-container principal <strong>en rangée</strong> et ses deux enfants directs sont les deux
+                        parties principales du gabarit, à savoir ".menu" (la partie latérale incluant la navigation) et ".contenu" (la zone
+                        principale de contenu). Le contenu qui déborde à droite lorsque le menu apparaît est caché avec
+                        <code>overflow-x:hidden</code>.
+                    </li>
+                    <li>
+                        Sur grand écran <code>(min-width: 768px)</code>, le <strong>menu</strong> est simplement placé à gauche du
+                        <strong>contenu</strong> comme item-flex.
+                    </li>
+                    <li>
+                        Sur petit écran, on sort le menu du flux normal du document en le mettant en <code>position: absolute</code> et en
+                        le mettant en arrière-plan avec <code>z-index:-1</code>, ".contenu" est alors
+                        <strong>automatiquement</strong> décalé en translation par dessus le <strong>menu</strong>.
+                    </li>
+                    <li>
+                        <em
+                            >Il est important de regarder les positions respectives de la case à cocher (<code>checkbox</code>) et de sa
+                            légende (<code>label</code>) dans la structure HTML du document.</em
+                        >
+                    </li>
+                </ul>
+            </section>
+
+            <footer>Sur petit écran, le contenu se déplace vers la droite pour montrer le menu.</footer>
+        </main>
+    </body>
+</html>

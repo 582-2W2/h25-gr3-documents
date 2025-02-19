@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>1 - Effet accordéon avec :checked et séelecteurs d'adjacence</title>
+
+    <!-- Ajustement de la taille du viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Police d'icônes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <style>
+        /* Normalisation supplémentaire
+        =============================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Mise en page de base - Décoration
+        =============================================== */
+
+        html {
+            width: 100vw;
+            height: 100vh;
+            /*Ajustement de la taille des polices à la racine du document*/
+            font-size: clamp(14px, 0.75rem + 1vw, 20px);
+        }
+
+        body {
+            width: 80%;
+            margin: 0 auto;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        main {
+            background-color: #e3eaf0;
+        }
+
+        article {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 2px solid blue
+        }
+
+        section {
+            margin-top: 1rem;
+        }
+
+        label {
+            background: rgb(14, 102, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            color: #f3ece5;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contenu {
+            background: #000;
+            color: #f3ece5;
+            font-size: 0.9rem;
+            /*
+                Au démarrage la hauteur maximale est de 0px,
+                le contenu qui déborde est masqué et on déclare
+                un effet de transition
+            */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s;
+        }
+
+        .contenu p {
+            margin-bottom: 0.8em;
+            padding: 1em 1em 0;
+        }
+
+        .fleche {
+            font-size: 2rem;
+            transition: rotate 0.5s;
+        }
+
+        /*Gestion de la case à cocher et apparition du texte*/
+
+        input[id^="section"]:checked + label > .fleche {
+            /* Rotation de la flèche */
+            /* transform: rotate(180deg); */
+            rotate: 180deg;
+        }
+
+        input[id^="section"]:checked ~ .contenu {
+            /*
+                Pour le texte, on met une grande hauteur maximale,
+                pour s'assurer que la hauteur soit OK sur tous les périphériques
+            */
+            max-height: 2000px;
+        }
+
+        input[id^="section"] {
+            /*On dissimule la case à cocher*/
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Montrer/cacher du texte avec une case à cocher masqué</h2>
+    </header>
+
+    <article class="avecCheckbox">
+        <h3>Accordéon multi-sections ouvertes (checkbox)</h3>
+        <section>
+            <input type="checkbox" id="section1" />
+            <label for="section1">
+                <span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+            <div class="contenu">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </section>
+        <section>
+            <input type="checkbox" id="section2" />
+            <label for="section2">
+                <span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+            <div class="contenu">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et amet vero nostrum in, vitae fugiat, dolorem hic odit quos sit sequi error tempore perferendis ea quam dicta dolore, consectetur reprehenderit voluptatum delectus. Harum eaque velit officia omnis sapiente esse recusandae maiores debitis quod. Autem nemo explicabo adipisci beatae dolorem earum!
+                </p>
+            </div>
+        </section>
+        <section>
+            <input type="checkbox" id="section3" />
+            <label for="section3">
+                <span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+            <div class="contenu">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At explicabo nihil consequatur? Cum, sequi similique, totam vitae ipsam enim voluptatum fuga quia blanditiis asperiores, vero in expedita impedit! Error, totam? Facere, labore beatae ad debitis, quaerat atque qui, mollitia quos ut voluptatem rerum nesciunt. At quam beatae omnis, veritatis dicta delectus dignissimos incidunt enim amet maxime ullam cupiditate dolorum natus quibusdam, minus excepturi. Dolorum debitis inventore aut in cumque adipisci, magni corporis possimus? Amet incidunt deleniti optio sunt quia accusamus, autem dolores sint mollitia vitae odit soluta ratione, aliquid quidem facere debitis quo. Amet explicabo hic rem soluta, voluptatum a!</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, amet reiciendis dolorem, ratione consequuntur illo nam culpa, eaque ullam similique modi repudiandae animi et. Voluptas doloremque aliquid, eos itaque odit placeat obcaecati. Quo provident neque, sed et eligendi nobis, nesciunt rerum harum atque excepturi ipsum laborum temporibus veniam minima magni iure, quos officiis aperiam necessitatibus odit possimus labore dolor facere! Sint dolores aliquam iusto, earum soluta exercitationem, reprehenderit nemo unde quod voluptate veniam, alias corporis?</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias rerum voluptatum unde aperiam deleniti est cumque repellendus laboriosam eius? Sunt, in! Tempore illo quis deleniti. Fugit, iusto aliquid numquam ratione amet ullam optio corrupti suscipit? Sequi minus illo dolore tenetur aut vero temporibus explicabo officia error eum perspiciatis debitis ratione harum, nemo magnam mollitia libero expedita eos esse? Eaque, ducimus praesentium fugiat officia quaerat perspiciatis reiciendis impedit nihil modi voluptatibus facilis animi dignissimos voluptas necessitatibus error nemo perferendis labore numquam repudiandae quisquam, tempora culpa assumenda dolore officiis. Omnis illum et, tempora facere labore corrupti a laboriosam minima alias beatae! Eaque amet unde assumenda dignissimos earum voluptates eius harum illum, dolorum iure perferendis, rerum asperiores? Porro ad maiores inventore praesentium, aliquid magni ratione, dolores perferendis quidem quam repellendus. Praesentium omnis odio esse aut id amet laudantium! Exercitationem rem impedit illo cupiditate natus, explicabo perspiciatis nihil unde, pariatur suscipit quas quod! Autem exercitationem quidem eum nemo delectus tempore temporibus perspiciatis voluptate possimus obcaecati officiis quis quibusdam unde inventore consequatur eveniet voluptas natus rerum voluptatibus sapiente impedit iure accusantium, culpa voluptatum. Suscipit sequi saepe, rem laboriosam porro perferendis ducimus enim, unde nisi ea labore explicabo animi expedita debitis recusandae veritatis! Perferendis, quidem nostrum?</p>
+            </div>
+        </section>
+    </article>
+    <article class="avecRadio">
+        <h3>Accordéon une section ouverte à la fois (radio)</h3>
+        <section>
+            <input type="radio" name="accordeon2" id="section4" />
+            <label for="section4">
+                <span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+            <div class="contenu">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </section>
+        <section>
+            <input type="radio" name="accordeon2" id="section5" />
+            <label for="section5">
+                <span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+            <div class="contenu">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et amet vero nostrum in, vitae fugiat, dolorem hic odit quos sit sequi error tempore perferendis ea quam dicta dolore, consectetur reprehenderit voluptatum delectus. Harum eaque velit officia omnis sapiente esse recusandae maiores debitis quod. Autem nemo explicabo adipisci beatae dolorem earum!
+                </p>
+            </div>
+        </section>
+        <section>
+            <input type="radio" name="accordeon2" id="section6" />
+            <label for="section6">
+                <span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+            <div class="contenu">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At explicabo nihil consequatur? Cum, sequi similique, totam vitae ipsam enim voluptatum fuga quia blanditiis asperiores, vero in expedita impedit! Error, totam? Facere, labore beatae ad debitis, quaerat atque qui, mollitia quos ut voluptatem rerum nesciunt. At quam beatae omnis, veritatis dicta delectus dignissimos incidunt enim amet maxime ullam cupiditate dolorum natus quibusdam, minus excepturi. Dolorum debitis inventore aut in cumque adipisci, magni corporis possimus? Amet incidunt deleniti optio sunt quia accusamus, autem dolores sint mollitia vitae odit soluta ratione, aliquid quidem facere debitis quo. Amet explicabo hic rem soluta, voluptatum a!</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, amet reiciendis dolorem, ratione consequuntur illo nam culpa, eaque ullam similique modi repudiandae animi et. Voluptas doloremque aliquid, eos itaque odit placeat obcaecati. Quo provident neque, sed et eligendi nobis, nesciunt rerum harum atque excepturi ipsum laborum temporibus veniam minima magni iure, quos officiis aperiam necessitatibus odit possimus labore dolor facere! Sint dolores aliquam iusto, earum soluta exercitationem, reprehenderit nemo unde quod voluptate veniam, alias corporis?</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias rerum voluptatum unde aperiam deleniti est cumque repellendus laboriosam eius? Sunt, in! Tempore illo quis deleniti. Fugit, iusto aliquid numquam ratione amet ullam optio corrupti suscipit? Sequi minus illo dolore tenetur aut vero temporibus explicabo officia error eum perspiciatis debitis ratione harum, nemo magnam mollitia libero expedita eos esse? Eaque, ducimus praesentium fugiat officia quaerat perspiciatis reiciendis impedit nihil modi voluptatibus facilis animi dignissimos voluptas necessitatibus error nemo perferendis labore numquam repudiandae quisquam, tempora culpa assumenda dolore officiis. Omnis illum et, tempora facere labore corrupti a laboriosam minima alias beatae! Eaque amet unde assumenda dignissimos earum voluptates eius harum illum, dolorum iure perferendis, rerum asperiores? Porro ad maiores inventore praesentium, aliquid magni ratione, dolores perferendis quidem quam repellendus. Praesentium omnis odio esse aut id amet laudantium! Exercitationem rem impedit illo cupiditate natus, explicabo perspiciatis nihil unde, pariatur suscipit quas quod! Autem exercitationem quidem eum nemo delectus tempore temporibus perspiciatis voluptate possimus obcaecati officiis quis quibusdam unde inventore consequatur eveniet voluptas natus rerum voluptatibus sapiente impedit iure accusantium, culpa voluptatum. Suscipit sequi saepe, rem laboriosam porro perferendis ducimus enim, unde nisi ea labore explicabo animi expedita debitis recusandae veritatis! Perferendis, quidem nostrum?</p>
+            </div>
+        </section>
+    </article>
+
+</body>
+
+</html>
