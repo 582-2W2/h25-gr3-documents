@@ -7,6 +7,9 @@
 > :construction: = en cours
 > :heavy_check_mark: = complété
 
+### Semaine 5 :checkered_flag:
+>Diverses stratégies d'affichage d'un menu adaptatif sur appareil mobile (ou viewport restreint en largeur en général). Contrôle de l'affichage du menu et du défilement de la page en arrière plan en JavaScript.
+
 ### Semaine 4 :heavy_check_mark:
 >Mise en page adaptative (suite). Police d'icônes (Google Material Icons). Sélecteurs d'adjacence CSS. Pseudo-classe `:checked`. Icône de menu adaptatif ('burger'). Affichage d'un menu adaptatif à l'aide d'une application des sélecteurs d'adjacence et des cases à cocher HTML.
 

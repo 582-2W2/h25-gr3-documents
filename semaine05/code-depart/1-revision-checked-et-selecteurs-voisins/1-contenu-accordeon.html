@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>1 - Effet accordéon avec :checked et séelecteurs d'adjacence</title>
+
+        <!-- Ajustement de la taille du viewport-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Police d'icônes de Google-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+        <style>
+            /* Normalisation supplémentaire
+        =============================================== */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Mise en page de base - Décoration
+        =============================================== */
+
+            html {
+                width: 100vw;
+                height: 100vh;
+                /*Ajustement de la taille des polices à la racine du document*/
+                font-size: clamp(14px, 0.75rem + 1vw, 20px);
+            }
+
+            body {
+                width: 80%;
+                margin: 0 auto;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            }
+
+            main {
+                background-color: #e3eaf0;
+            }
+
+            label {
+                background: rgb(14, 102, 255);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+                color: #f3ece5;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .contenu {
+                background: #000;
+                color: #f3ece5;
+                font-size: 0.9rem;
+                /*
+                Au démarrage la hauteur maximale est de 0px,
+                le contenu qui déborde est masqué et on déclare
+                un effet de transition
+            */
+            }
+
+            .contenu p {
+                margin-bottom: 0.8em;
+                padding: 1em 1em 0;
+            }
+
+            .fleche {
+                font-size: 2rem;
+                transition: transform 0.5s;
+            }
+
+            /*Gestion de la case à cocher et apparition du texte*/
+            #montrer-texte:checked + label > .fleche {
+                /*Rotation 3D de la flèche sur des X*/
+            }
+
+            #montrer-texte:checked ~ .contenu {
+                /*
+                Pour le texte, on met une grande hauteur maximale,
+                pour s'assurer que la hauteur soit OK sur tous les périphériques
+            */
+            }
+
+            #montrer-texte {
+                /*On dissimule la case à cocher*/
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h2>Montrer/cacher du texte avec une case à cocher masqué</h2>
+        </header>
+
+        <section>
+            <input type="checkbox" id="montrer-texte" />
+            <label for="montrer-texte"
+                ><span>Ouvrir pour voir la description</span>
+                <span class="material-icons fleche">expand_more</span>
+            </label>
+
+            <div class="contenu">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </section>
+    </body>
+</html>
