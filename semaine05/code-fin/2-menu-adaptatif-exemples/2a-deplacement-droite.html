@@ -34,7 +34,8 @@
                 /*Conteur flex en rangée*/
                 display: flex;
 
-                /*On affiche pas le contenu qui déborde sur l'axe des X*/
+                /*On n'affiche pas le contenu qui déborde sur l'axe des X*/
+                overflow-x: hidden;
             }
 
             main.contenu {
@@ -49,6 +50,7 @@
                 flex-direction: column;
 
                 /*Effet de transition*/
+                transition: translate 300ms;
             }
 
             section {
@@ -101,6 +103,9 @@
             /* Mise en page pour les petits périphériques
         =============================================== */
             .menu {
+                position: absolute;
+                min-height: 100%;
+                z-index: -1;
             }
 
             .bouton-burger {
@@ -122,7 +127,7 @@
                     #333 100%
                 );
                 cursor: pointer;
-                transition: transform 400ms;
+                transition: rotate 300ms;
             }
 
             /* Contrôle du menu et du bouton burger...
@@ -133,14 +138,16 @@
             le contenu vers la droite
         ==========================================================================*/
 
-            #cc-pour-bouton-burger {
+            #cc-pour-bouton-burger:checked + .contenu > label  {
+                rotate: 5.25turn;
             }
 
             /*
             * On déplace le contenu vers la droite 
             * Le déplacement correspond à la largeur du menu: 10rem
             */
-            #cc-pour-bouton-burger {
+            #cc-pour-bouton-burger:checked + .contenu {
+                translate: 10rem;
             }
 
             #cc-pour-bouton-burger {
@@ -152,17 +159,27 @@
         =============================================== */
 
             /*
-            On enlève la position en absolue du menu,
-            celui-ci revient se positionner à gauche du contenu global
-            comme premier enfant flex de la rangée...
-            On enlève l'affichage du bouton burger          
-        */
+                On enlève la position en absolue du menu,
+                celui-ci revient se positionner à gauche du contenu global
+                comme premier enfant flex de la rangée...
+                On enlève l'affichage du bouton burger          
+            */
 
             @media screen and (min-width: 768px) {
                 .menu {
+                    position: static;
+                }
+
+                /* 
+                    S'assurer aussi que le contenu revient à sa place par défaut si on agrandit  
+                    l'écran après avoir dévoilé la navigation en mode "mobile"
+                */
+                #cc-pour-bouton-burger:checked + .contenu {
+                    translate: 0;
                 }
 
                 .bouton-burger {
+                    display: none;
                 }
             }
         </style>

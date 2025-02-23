@@ -19,8 +19,8 @@
             /* Styles de base
         =============================================== */
             html {
-                width: 100vw;
-                height: 100vh;
+                /* width: 100vw;*/
+                height: 100vh; 
                 font-size: clamp(14px, 0.5rem + 1vw, 18px);
             }
 
@@ -93,25 +93,37 @@
 
             .barre-menu {
                 border-bottom: 2px solid #ddd;
+                height: 10vh;
 
                 /*
-                Conteneur flex en rangée avec alignement à droite pour
-                les petits périphériques. Et les items-flex sont centrés
-                sur l'axe secondaire.
-            */
+                    Conteneur flex en rangée avec alignement à droite pour
+                    les petits périphériques. Et les items-flex sont centrés
+                    sur l'axe secondaire.
+                */
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
             }
 
             .menu {
                 width: 100%;
                 /*Position fixe sur petit écran en bas de la barre de la barre de menu*/
+                position: fixed;
+                top: 10vh;
 
                 /*Sa hauteur est celle de la hauteur du viewport MOINS celle de la barre de navigation*/
+                height: 90vh;
 
                 /*Conteneur flex en colonne avec élément centré au milieu*/
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
 
                 /*Au démarrage on met le menu complètement à gauche*/
+                translate: -100%;
 
                 /*Effet de transition*/
+                transition: translate 300ms;
             }
 
             .bouton-burger {
@@ -133,7 +145,7 @@
                     #ddd 100%
                 );
                 cursor: pointer;
-                transition: transform 400ms;
+                transition: rotate 400ms;
             }
 
             /* Contrôle du menu et du bouton burger...
@@ -145,13 +157,14 @@
         ==========================================================================*/
 
             #cc-pour-bouton-burger:checked ~ .barre-menu > .bouton-burger {
-                transform: rotate(90deg);
+                rotate: 90deg;
             }
 
             /*
-            On déplace le menu vers la droite, en lui enlevant la translation déjà appliquée
-        */
+                On déplace le menu vers la droite, en lui enlevant la translation déjà appliquée
+            */
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu {
+                translate: 0
             }
 
             #cc-pour-bouton-burger {
@@ -172,12 +185,20 @@
 
             @media screen and (min-width: 768px) {
                 .menu {
+                    position: static;
+                    height: 100%;
+                    flex-direction: row;
+                    translate: 0;
+                    align-items: center;
                 }
 
                 .menu a {
+                    flex: 1 1 auto;
                 }
 
                 .barre-menu {
+                    height: auto;
+                    border: none;
                 }
 
                 .bouton-burger {
