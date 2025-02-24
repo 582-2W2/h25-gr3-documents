@@ -129,10 +129,12 @@
                 flex-direction: column;
                 justify-content: center;
 
-                /*Au démarrage on met le menu complètement en haut à droite et avec une échelle de 10%*/
+                /*Au démarrage on met le menu complètement en haut à droite et avec une mise à l'échelle de 10%*/
+                translate: 100% -100%;
+                scale: 0.1;
 
                 /*Effet de transition*/
-                transition: transform 1s;
+                transition: translate 1s, scale 1s;
             }
 
             .bouton-burger {
@@ -170,10 +172,12 @@
             }
 
             /*
-            On déplace le menu vers le bas, vers la gauche en le faisant grossir,
-            et ce, en lui enlevant les transformations appliquées
-        */
+                On déplace le menu vers le bas, vers la gauche en le faisant grossir,
+                et ce, en lui enlevant les transformations appliquées
+            */
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu {
+                translate: initial;
+                scale: initial;
             }
 
             #cc-pour-bouton-burger {
@@ -224,7 +228,9 @@
 
         <div class="barre-menu">
             <!-- Bouton burger-->
-            <label for="cc-pour-bouton-burger"><div class="bouton-burger"></div></label>
+            <label for="cc-pour-bouton-burger">
+                <div class="bouton-burger"></div>
+            </label>
             <nav class="menu">
                 <a href="#">Bouton 1</a>
                 <a href="#">Bouton 2</a>

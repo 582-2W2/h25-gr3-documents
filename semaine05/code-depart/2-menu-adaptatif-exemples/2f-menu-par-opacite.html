@@ -120,14 +120,19 @@
                 justify-content: center;
 
                 /*Au démarrage on met complètement transparent*/
+                opacity: 0.1;
 
                 /*Effet de transition*/
+                transition: opacity 0.5s;
+
+                pointer-events: none;
             }
 
             /*On met tous les boutons du menu complètement à gauche*/
-
             .menu a {
+                translate: -100%;
                 /*Effet de transition*/
+                transition: translate 0.5s;
             }
 
             .bouton-burger {
@@ -168,10 +173,13 @@
             On met le menu opaque
         */
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu {
+                opacity: 0.7;
+                pointer-events: initial;
             }
 
             /*Arrivée des différents boutons avec un délai*/
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu a {
+                translate: 0;
             }
 
             #cc-pour-bouton-burger {
@@ -239,6 +247,7 @@
             </header>
 
             <section>
+                <a href="http://www.google.com">Google</a>
                 <h3>Navigation basée sur :</h3>
                 <ul>
                     <li>CSS Flexbox pour la disposition.</li>

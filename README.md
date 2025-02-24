@@ -7,7 +7,7 @@
 > :construction: = en cours
 > :heavy_check_mark: = complété
 
-### Semaine 5 :checkered_flag:
+### Semaine 5 :construction:
 >Diverses stratégies d'affichage d'un menu adaptatif sur appareil mobile (ou viewport restreint en largeur en général). Contrôle de l'affichage du menu et du défilement de la page en arrière plan en JavaScript.
 
 ### Semaine 4 :heavy_check_mark:
