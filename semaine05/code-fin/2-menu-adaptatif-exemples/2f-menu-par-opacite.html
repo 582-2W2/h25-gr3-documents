@@ -133,6 +133,7 @@
 
                 /*Effet de transition*/
                 transition: translate 0.5s;
+            
             }
 
             /* Ajouter un délai aux transitions des différents éléments cliquables de la navigation */
@@ -187,7 +188,7 @@
                 On met le menu opaque
             */
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu {
-                opacity: 1;
+                opacity: 0.8;
                 pointer-events: initial;
             }
 
@@ -218,12 +219,15 @@
                     flex-direction: row;
                     height: auto;
                     transform: translateX(0%);
+                    opacity: 1;
                     justify-content: space-evenly;
                 }
 
                 .menu a {
-                    flex-grow: 1;
+                    flex: 1 1 auto;
                     /*Enlever la translation*/
+                    translate: 0;
+                    transition: none;
                 }
 
                 .barre-menu {

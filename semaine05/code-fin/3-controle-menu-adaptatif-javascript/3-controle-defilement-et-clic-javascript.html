@@ -191,7 +191,7 @@
             On met le menu opaque
         */
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu {
-                opacity: 1;
+                opacity: 0.9;
             }
 
             /*Arrivée des différents boutons avec un délai*/
@@ -309,27 +309,59 @@
              */
 
             //Récupérer la case à cocher et la balise <body>
-            let leCheckBox;
-            let leBody;
+            let leCheckBox = document.querySelector("#cc-pour-bouton-burger");
+            let leBody = document.querySelector("body");
+
+            // Écouter les clics sur la case à cocher
+            leCheckBox.addEventListener('click', gererLeDefilement);
 
             /*
              * Gérer le défilement des éléments de la page HTML quand le menu est affiché sur petit écran
              */
 
-            function gererLeDefilement(event) {}
+            function gererLeDefilement() {
+                console.log("La case est cocher a été cliquée");
+                console.log("État de la case à cocher : ", leCheckBox.checked);
+                // Donc si la case à cocher est cochée, pas de barre de défilement pour la balise BODY
+                if(leCheckBox.checked) {
+                    leBody.style.overflowY = "hidden";
+                }
+                else {
+                    leBody.style.overflowY = "scroll";
+                }
+                
+            }
 
             /*
              * Script qui contrôle l'état de la case à cocher pour fermer
              * le menu quand on clique sur un bouton
              */
-            /*Récupérer les boutons du menu*/
-            let lesBoutons;
+            /*Récupérer les éléments de navigation*/
+            let eltsNav =  document.querySelectorAll("nav.menu > a");
+            console.log("Les éléments de nav : ", eltsNav);
+            
+            // Boucle avec du code "expressif" (préférable)
+            for (let elt of eltsNav) {
+                elt.addEventListener("click", fermerLeMenuAdpatatif);
+            }
+
+            // Boucle avec du code "impératif"
+            /*
+                for (let i = 0; i < eltsNav.length; i++) {
+                    eltsNav[i].addEventListener("click", fermerLeMenuAdpatatif);
+                }
+            */
 
             /*Mettre un gestionnaire d'événement sur chaque bouton avec un boucle for of*/
 
-            function controlerBoutonBurger() {
-                //Gérer l'état de la case à cocher
-                //Remettre la barre de défilement sur le body
+            function fermerLeMenuAdpatatif() {
+                console.log("Un élément de navigation a été cliqué");
+                // Décocher la case à cocher
+                leCheckBox.checked = false;
+                // // Remettre la barre de défilement sur le body
+                leBody.style.overflowY = "scroll";
+
+                // leCheckBox.click();
             }
         </script>
     </body>
