@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>3c - Cumuler des effets d'animations</title>
+
+        <style type="text/css">
+            /* Normalisation supplémentaire
+        =============================================== */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Styles de base
+        =============================================== */
+
+            html {
+                width: 100vw;
+                height: 100vh;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                font-size: clamp(14px, 0.5rem + 1vw, 18px);
+            }
+
+            body {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+
+                background-color: rgba(247, 203, 2, 0.29);
+                color: #800000;
+
+                /*Conteneur flex pour ses enfants en colonne centré sur les 2 axes*/
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            main {
+                /*Prend toute la place qui reste en hauteur en tant qu'item-flex*/
+                flex: 1 1 0;
+
+                /*Propriétés en tant que conteneur flex*/
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .paysage {
+                /*Occupe 75% de la hauteur et de la largeur du viewport*/
+                height: 75vh;
+                width: 75vw;
+
+                /*Positionnement CSS*/
+                position: relative;
+
+                /*Arrière-plan et bordure*/
+                background: #cdffff url(images/paysageAutomne.jpg) no-repeat;
+                background-position: center bottom;
+                background-size: cover;
+                border: 4px solid #800000;
+                border-radius: 2rem;
+
+                /*On cache le contenu qui déborde*/
+                overflow: hidden;
+            }
+
+            .conteneur-feuille {
+                /*Occupe 5rem en largeur et toute la hauteur du paysage*/
+                width: 5rem;
+                height: 100%;
+
+                /*Positionnement CSS*/
+                position: absolute;
+
+                /*Au départ on s'assure que les feuilles sont en dehors du paysage...*/
+                transform: translateX(-300%);
+            }
+
+            /*Pour voir le déplacement des conteneurs des feuilles*/
+            .paysage:hover > .conteneur-feuille {
+                outline: 1px dashed #666;
+            }
+
+            /* Toutes les feuilles */
+            .feuille {
+                /*Dimensions*/
+                width: 5rem;
+                height: 3rem;
+
+                /*Positions des images en arrière-plan*/
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+
+                /*Déplacement du point de transformation au coin supérieur gauche*/
+                transform-origin: left top;
+            }
+
+            /* Chaque feuille spécifique */
+            .feuille1 {
+                background-image: url(images/feuille_1.png);
+            }
+
+            .feuille2 {
+                background-image: url(images/feuille_2.png);
+            }
+
+            .feuille3 {
+                background-image: url(images/feuille_3.png);
+            }
+
+            /* Transformations 3D & Animations CSS*/
+
+            /* ========================================================================== */
+
+            /* Définir deux animations CSS */
+
+            /* Animation du déplacement vertical des feuilles */
+            @keyframes deplacement-vertical-des-feuilles {
+
+            }
+
+            /* Animation du déplacement horizontal des conteneurs de feuille */
+            @keyframes deplacement-conteneur-feuille {
+
+            }
+
+            /* Appliquer l'animation aux conteneurs de feuille */
+            .conteneur-feuille {
+                
+            }
+
+            /*
+                Ajout de délais sur les conteneurs 2 et 3 pour que les animations ne partent pas toutes en même temps
+            */
+            .conteneur-feuille:nth-child(2) {
+                /*Délai de 2 secondes avant le début de l'animation*/
+
+            }
+
+            .conteneur-feuille:nth-child(3) {
+                /*Délai de 4 secondes avant le début de l'animation*/
+
+            }
+
+            /* Appliquer l'animation aux feuilles */
+            .feuille {
+
+            }
+
+            /*
+                Ajout de délais sur les feuiles 2 et 3 pour que les animations ne partent pas toutes en même temps
+            */
+            .feuille2 {
+                /*Délai de 2 secondes avant le début de l'animation*/
+
+            }
+
+            .feuille3 {
+                /*Délai de 4 secondes avant le début de l'animation*/
+                
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Animer des feuilles d'automne qui virevoltent...</h1>
+            <h3>Combiner (ou cumuler) des effets d'animations...</h3>
+        </header>
+
+        <main>
+            <section class="paysage">
+                <div class="conteneur-feuille">
+                    <div class="feuille feuille1"></div>
+                </div>
+
+                <div class="conteneur-feuille">
+                    <div class="feuille feuille2"></div>
+                </div>
+
+                <div class="conteneur-feuille">
+                    <div class="feuille feuille3"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <h3>Survolez le paysage pour voir les conteneurs de feuille se déplacer...</h3>
+        </footer>
+    </body>
+</html>

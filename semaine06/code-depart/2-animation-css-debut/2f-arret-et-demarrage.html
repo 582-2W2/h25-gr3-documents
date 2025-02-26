@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>2f - État d'exécution de l'animation</title>
+
+	<style>
+		body {
+			margin-left: 1%;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			color: #708090;
+		}
+
+
+		section {		
+			width: 80vmin;
+			/*Contexte flex en rangée pour ses enfants*/
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		h1 {
+			font-size: 2rem;
+		}
+		
+		
+		/* Images-clés de l'animation */
+		
+		@keyframes animer-arriere-plan{
+			from {
+				background-size: 20px 20px;
+			}
+			80%, to {
+				background-size: 50px 50px;
+			}
+		}
+		
+		div {
+			width: 30vmin;
+			height: 30vmin;
+			background-color: #708090;
+			color:white;
+			text-align: center;
+			font-size: 2rem;
+			cursor:pointer;
+			
+			/*Arrière-plan*/
+			background-image: repeating-radial-gradient(transparent, transparent 9px, black 11px, black 20px);
+			background-position: center;
+			background-size: 20px 20px;
+
+			/*Animation*/
+			animation-name: animer-arriere-plan;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+		
+		
+		/*
+			L'animation du deuxième carré ne joue pas au démarrage...
+			... mais seulement au survol du carré.
+		*/
+		
+		
+	</style>
+</head>
+
+
+
+<body>
+	<h1>Faire jouer ou mettre en pause une animation...</h1>
+	<section>
+		<div></div>
+		<div>Survolez-moi pour voir mon animation!</div>
+	</section>
+
+</body>
+
+</html>

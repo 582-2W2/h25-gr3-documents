@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>3d - Gestion des délais d'animation avec JavaScript</title>
+
+        <style>
+            /* Normalisation supplémentaire
+             * =============================================== */
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Mise en page
+             * =============================================== */
+
+            body {
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            section {
+                width: 100%;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #000;
+                gap: 0 1vw;
+            }
+            div {
+                width: 2vw;
+                height: 30vh;
+                background: linear-gradient(45deg, cyan, #fff);
+                border-radius: 1vw;
+            }
+
+            /* Animations CSS
+            =============================================== */
+            @keyframes animation-vague {
+                from,
+                to {
+                    scale: 0;
+                }
+                50% {
+                    scale: 1;
+                }
+            }
+
+            /* Appliquer l'animations à la classe 'vague'
+            * Les délais pour l'animation de chaque div sont affectés avec JavaScript
+            * ======================================================================== */
+            .vague {
+                animation: animation-vague 1s alternate infinite;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Animer plusieurs éléments avec la même classe CSS...</h1>
+            <h3>Déclarer les délais d'animation (<code>animation-delay</code>) avec JavaScript...</h3>
+        </header>
+
+        <section>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+            <div class="vague"></div>
+        </section>
+
+        <script>
+            // Récupérer tous les éléments div de classe ".vague"
+
+            // Leur attribuer des délais d'animation différents par incréments de 0.1s
+            
+        </script>
+    </body>
+</html>

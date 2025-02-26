@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<title>2d - Répétition de l'animation</title>
+
+	<style>
+		body {
+			margin-left: 1%;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		p {
+			font-size: 1.2rem;
+			margin: 0.5rem;
+		}
+
+		/*Images-clés de l'animation de la première division*/
+
+		@keyframes changer-couleur-et-taille {
+			from {
+				background-color: red;
+				scale: 1;
+			}
+
+			25%,
+			75% {
+				background-color: green;
+				scale: 2 1;
+			}
+
+			50% {
+				background-color: blue;
+				scale: 4 1;
+			}
+
+			to {
+				background-color: yellow;
+				scale: 1;
+			}
+		}
+
+
+
+		/*Images-clés de l'animation de la deuxième division : deplacer*/
+		@keyframes deplacer {
+			from {
+				translate: 0;
+			}
+			to {
+				translate: 80vw;
+			}
+		}
+
+
+		#div1 {
+			width: 20vmin;
+			height: 20vmin;
+			border: 1px solid black;
+
+			/*Point de transformation en haut et à gauche*/
+			transform-origin: left top;
+
+
+			/*Effet d'animation*/
+			animation-name: changer-couleur-et-taille;
+			animation-duration: 5s;
+			
+			/* Jouer l'animation 3 fois */
+
+		}
+
+		#div2 {
+			width: 20vmin;
+			height: 20vmin;
+			border: 1px solid black;
+			background-color: red;
+
+			/*Effet d'animation*/
+			animation-name: deplacer;
+			animation-duration: 2s;
+			
+			/*  Jouer l'animation en boucle continuellement */
+
+		}
+	</style>
+
+</head>
+
+<body>
+	<h1>Tester les sous-propriétés des animations CSS | animation-iteration-count </h1>
+
+	<p>Faire jouer l'animation de cette div 3 fois.</p>
+
+	<div id="div1"></div>
+
+	<p>Faire jouer l'animation de cette div en boucle</p>
+	<div id="div2"></div>
+
+</body>
+
+</html>

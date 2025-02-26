@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>1 - Transition CSS et contrôle du défilement en JS</title>
+
+	<!--Polices de caractères de Google-->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Asap&display=swap" rel="stylesheet" />
+
+	<style>
+		/* Normalisation supplémentaire 
+        =============================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Mise en page de base
+        =============================================== */
+
+		html {
+			width: 100vw;
+			height: 100vh;
+			font-family: "Asap", sans-serif;
+			/*Ajustement de la taille des polices à la racine du document*/
+			font-size: clamp(12px, 0.5rem + 0.5vw, 18px);
+		}
+
+		body {
+			width: 100%;
+			min-height: 100%;
+			text-align: center;
+			/*On cache le contenu qui déborde sur l'axe des x*/
+			overflow-x: hidden;
+		}
+
+		section {
+			background-color: #42455a;
+			color: #e0ffff;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		section:nth-child(even) {
+			/*Les couleurs sont inversées pour les sections paires*/
+			background-color: #e0ffff;
+			color: #42455a;
+		}
+
+		section h1 {
+			font-size: 3.5rem;
+		}
+
+		section h2 {
+			font-size: 3rem;
+			text-transform: uppercase;
+		}
+
+		section h3 {
+			font-size: 2rem;
+			text-transform: uppercase;
+			margin-bottom: 0.5rem;
+		}
+
+		section .conteneur-texte {
+			display: flex;
+			flex-direction: column;
+		}
+
+		section .conteneur-texte .boite-de-texte {
+			margin: 1.5rem;
+			padding: 1.5rem;
+			background: #00c2cb;
+		}
+
+		.conteneur-principal {
+			/*
+				Au démarrage, les éléments ne sont pas visibles (déplacement et opacité)
+				On va les faire apparaître (par transition) avec le défilement de la page
+				quand ils vont atteindre une certaine "position".
+			*/
+			
+	
+		}
+
+		/* Styles pour les écrans plus larges
+        =============================================== */
+		@media screen and (min-width: 992px) {
+			section .conteneur-texte {
+				flex-direction: row;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<h1>Faites défiler vers le bas pour faire apparaître les éléments &#8595;</h1>
+	</section>
+	<section>
+		<div class="conteneur-principal">
+			<h2>TITRE DE LA SECTION</h2>
+			<div class="conteneur-texte">
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="conteneur-principal">
+			<h2>TITRE DE LA SECTION</h2>
+			<div class="conteneur-texte">
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="conteneur-principal">
+			<h2>TITRE DE LA SECTION</h2>
+			<div class="conteneur-texte">
+				<div class="boite-de-texte">
+					<h3>Texte / sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+				<div class="boite-de-texte">
+					<h3>Texte / sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+				<div class="boite-de-texte">
+					<h3>Texte /sous-section</h3>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eius molestiae perferendis eos provident
+						vitae
+						iste.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
